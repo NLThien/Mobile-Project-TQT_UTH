@@ -25,13 +25,16 @@ class NotificationsFragment : Fragment() {
         val notificationsViewModel =
             ViewModelProvider(this).get(NotificationsViewModel::class.java)
 
+        // Tắt tiêu đề Fragment
+        activity?.actionBar?.setDisplayShowTitleEnabled(false)
+
         _binding = FragmentNotificationsBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textNotifications
-        notificationsViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
-        }
+//        val textView: TextView = binding.textNotifications
+//        notificationsViewModel.text.observe(viewLifecycleOwner) {
+//            textView.text = it
+//        }
         return root
     }
 

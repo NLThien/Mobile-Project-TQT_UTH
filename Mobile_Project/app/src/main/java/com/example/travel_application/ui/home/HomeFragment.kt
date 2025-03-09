@@ -28,10 +28,17 @@ class HomeFragment : Fragment() {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textHome
-        homeViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
-        }
+        // Tắt tiêu đề Fragment
+        activity?.actionBar?.setDisplayShowTitleEnabled(false)
+
+        // Inflate layout
+        _binding = FragmentHomeBinding.inflate(inflater, container, false)
+
+
+//        val textView: TextView = binding.textHome
+//        homeViewModel.text.observe(viewLifecycleOwner) {
+//            textView.text = it
+//        }
         return root
     }
 
