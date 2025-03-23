@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--tạo trạng thái chọn cho item navigation bar khi ấn vào và không ấn vào-->
-<selector xmlns:android="http://schemas.android.com/apk/res/android">
-<!--    khi ấn vào thì màu trắng-->
-    <item android:state_checked="true" android:color="#FFFFFF" />
-<!--    khi không ấn vào thì màu đen-->
-    <item android:state_checked="false" android:color="#000000" />
-</selector>
