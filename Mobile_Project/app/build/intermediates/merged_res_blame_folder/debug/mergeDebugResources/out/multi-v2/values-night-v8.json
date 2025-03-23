@@ -8,9 +8,9 @@
                     "from": {
                         "startLines": "1",
                         "startColumns": "4",
-                        "startOffsets": "17",
+                        "startOffsets": "16",
                         "endColumns": "99",
-                        "endOffsets": "112"
+                        "endOffsets": "111"
                     },
                     "to": {
                         "startLines": "2",
@@ -18,30 +18,6 @@
                         "startOffsets": "55",
                         "endColumns": "98",
                         "endOffsets": "149"
-                    }
-                }
-            ]
-        },
-        {
-            "outputFile": "C:\\Users\\ROG\\.gradle\\daemon\\8.11.1\\com.example.travel_application.app-mergeDebugResources-50:\\values-night-v8\\values-night-v8.xml",
-            "map": [
-                {
-                    "source": "C:\\learn\\uthEx\\nam3\\ky2\\mobile\\Mobile_Project_Endterm\\Mobile_Project\\app\\src\\main\\res\\values-night\\themes.xml",
-                    "from": {
-                        "startLines": "2",
-                        "startColumns": "4",
-                        "startOffsets": "102",
-                        "endLines": "14",
-                        "endColumns": "12",
-                        "endOffsets": "821"
-                    },
-                    "to": {
-                        "startLines": "2",
-                        "startColumns": "4",
-                        "startOffsets": "55",
-                        "endLines": "14",
-                        "endColumns": "12",
-                        "endOffsets": "641"
                     }
                 }
             ]
