@@ -70,11 +70,11 @@ dependencies {
     implementation("com.squareup.retrofit2:converter-gson:2.9.0")
 
     implementation("androidx.compose.ui:ui:1.3.0")
-    implementation("androidx.compose.material:material:1.6.0")
     implementation("androidx.compose.ui:ui-tooling:1.3.0")
     implementation("androidx.navigation:navigation-compose:2.5.0")
 
     implementation("androidx.compose.material3:material3:1.1.2")
+    implementation("androidx.compose.material:material-icons-extended:1.3.0")
 
     // Room
     implementation("androidx.room:room-runtime:2.5.0")

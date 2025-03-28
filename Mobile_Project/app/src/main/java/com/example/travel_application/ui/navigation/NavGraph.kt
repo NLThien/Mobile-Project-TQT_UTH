@@ -23,31 +23,40 @@ import androidx.navigation.compose.rememberNavController
 import com.example.travel_application.ui.screen.LocationScreen
 import com.example.travel_application.ui.screen.MainScreen
 import com.example.travel_application.ui.screen.NotificationsScreen
+import com.example.travel_application.ui.screen.LoginScreen
 
 @Composable
 fun TravelApp(navController: NavHostController = rememberNavController()) {
-    val navController = rememberNavController()
 
     Scaffold(
         bottomBar = {
-            Box(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(bottom = 20.dp),
-                contentAlignment = Alignment.BottomCenter
-            ) {
+            if ( navController.currentBackStackEntry?.destination?.route != "login") {
                 AppBottomNavigation(navController)
             }
+
+        Box(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(bottom = 20.dp),
+            contentAlignment = Alignment.BottomCenter
+        ) {
+            AppBottomNavigation(navController)
+        }
+
         }
     ) { innerPadding ->
         NavHost(
             navController = navController,
-            startDestination = "main",
+            startDestination = "login",
             modifier = Modifier.padding(innerPadding)
         ) {
             composable("main") { MainScreen(navController) }
+
             composable("location") { LocationScreen(navController) }
+
             composable("notifications") { NotificationsScreen(navController) }
+
+            composable("login") { LoginScreen(navController) }
         }
     }
 }
