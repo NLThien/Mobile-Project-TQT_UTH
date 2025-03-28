@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.travel_application.app-mergeDebugResources-53:/values-fr/values-fr.xml",
+            "outputFile": "com.example.travel_application.app-mergeDebugResources-54:/values-fr/values-fr.xml",
             "map": [
                 {
                     "source": "C:\\Users\\ROG\\.gradle\\caches\\8.11.1\\transforms\\3f128df487e9702a875c74cc2f7f824e\\transformed\\core-1.15.0\\res\\values-fr\\values-fr.xml",

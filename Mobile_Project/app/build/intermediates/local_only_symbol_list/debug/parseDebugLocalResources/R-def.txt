@@ -15,8 +15,12 @@ color teal_700
 color white
 dimen activity_horizontal_margin
 dimen activity_vertical_margin
+drawable app_logo
 drawable ic_launcher_background
 drawable ic_launcher_foreground
+drawable ninhbinh_background
+drawable travel_background
+drawable travel_background_nt
 mipmap ic_launcher
 mipmap ic_launcher_round
 string app_name

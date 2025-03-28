@@ -9,6 +9,12 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.compose.rememberNavController
 import androidx.activity.compose.setContent
 import com.example.travel_application.ui.navigation.TravelApp
+import androidx.compose.ui.Modifier
+import androidx.navigation.compose.composable
+import com.example.travel_application.ui.screen.LocationScreen
+import com.example.travel_application.ui.screen.MainScreen
+import com.example.travel_application.ui.screen.NotificationsScreen
+import androidx.navigation.compose.NavHost
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
