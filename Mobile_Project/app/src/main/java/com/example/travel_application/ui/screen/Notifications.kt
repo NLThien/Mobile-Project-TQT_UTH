@@ -52,6 +52,7 @@ fun NotificationsScreen(navController: NavController) {
 //        }
     }
 }
+
 @Preview(showBackground = true)
 @Composable
 fun PreviewNotificationsScreen() {

@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.travel_application.app-mergeDebugResources-50:/values-v30/values-v30.xml",
+            "outputFile": "com.example.travel_application.app-mergeDebugResources-53:/values-v30/values-v30.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\ROG\\.gradle\\caches\\8.11.1\\transforms\\fd5a1f2bb822696b8f2ba07c97666fbe\\transformed\\material3-release\\res\\values-v30\\values-v30.xml",
+                    "source": "C:\\Users\\ROG\\.gradle\\caches\\8.11.1\\transforms\\d2877e9797c2f994a62cb3b62ae61b09\\transformed\\material3-release\\res\\values-v30\\values-v30.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
