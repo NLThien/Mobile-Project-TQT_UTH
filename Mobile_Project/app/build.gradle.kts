@@ -1,10 +1,9 @@
-import org.jetbrains.kotlin.gradle.plugin.KaptExtension
-
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
     kotlin("kapt")
+    id("com.google.gms.google-services")
 }
 
 android {
@@ -17,7 +16,7 @@ android {
         targetSdk = 35
         versionCode = 1
         versionName = "1.0"
-
+        multiDexEnabled = true
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -72,10 +71,6 @@ dependencies {
     implementation("androidx.compose.ui:ui:1.3.0")
     implementation("androidx.compose.ui:ui-tooling:1.3.0")
     implementation("androidx.navigation:navigation-compose:2.5.0")
-
-    implementation("androidx.compose.material3:material3:1.1.2")
-    implementation("androidx.compose.material:material-icons-extended:1.3.0")
-
     // Room
     implementation("androidx.room:room-runtime:2.5.0")
     kapt("androidx.room:room-compiler:2.5.0")
@@ -83,4 +78,29 @@ dependencies {
     // Coroutine support
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4")
+
+    implementation(platform("com.google.firebase:firebase-bom:33.12.0"))
+    implementation("com.google.firebase:firebase-analytics")
+    implementation("com.google.firebase:firebase-auth-ktx:22.3.1")
+    implementation("com.google.firebase:firebase-firestore")
+    // Jetpack Compose BOM
+    implementation(platform("androidx.compose:compose-bom:2024.03.00"))
+    implementation("androidx.compose.ui:ui")
+    implementation("androidx.compose.ui:ui-tooling-preview")
+    implementation("androidx.compose.material3:material3")
+    implementation("androidx.compose.material3:material3:1.2.0")
+    implementation("androidx.compose.material:material-icons-extended:1.5.0")
+    // Firebase UI (optional)
+    implementation("com.firebaseui:firebase-ui-auth:8.0.2")
+    //icon
+    implementation("io.coil-kt:coil-compose:2.4.0")
+
+    implementation("androidx.navigation:navigation-compose:2.7.6")
+    // Google Sign In
+    implementation("com.google.android.gms:play-services-auth:20.7.0")
+    //  fire base
+    implementation(platform("com.google.firebase:firebase-bom:33.11.0"))
+    implementation("com.google.firebase:firebase-analytics")
+    implementation("com.google.firebase:firebase-auth-ktx:22.3.1")
+    implementation("com.google.firebase:firebase-firestore")
 }
