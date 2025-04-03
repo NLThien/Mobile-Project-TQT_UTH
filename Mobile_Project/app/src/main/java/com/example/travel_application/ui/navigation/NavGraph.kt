@@ -24,44 +24,32 @@ import com.example.travel_application.ui.screen.LocationScreen
 import com.example.travel_application.ui.screen.MainScreen
 import com.example.travel_application.ui.screen.NotificationsScreen
 import com.example.travel_application.ui.screen.LoginScreen
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.ui.platform.LocalContext
+import com.example.travel_application.StackPages
 
-@Composable
-fun TravelApp(navController: NavHostController = rememberNavController()) {
+@Composable     // quản lý thanh bar chính
+fun AppNavigation(navController: NavHostController) {
+    val navController = rememberNavController()
 
-    Scaffold(
-        bottomBar = {
-            if ( navController.currentBackStackEntry?.destination?.route != "login") {
-                AppBottomNavigation(navController)
-            }
-
-        Box(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(bottom = 20.dp),
-            contentAlignment = Alignment.BottomCenter
-        ) {
-            AppBottomNavigation(navController)
+    NavHost(navController, startDestination = "StackPages") {
+        composable("StackPages") {
+            StackPages(navController)
         }
 
+        composable("main") {
+            MainScreen(navController)
         }
-    ) { innerPadding ->
-        NavHost(
-            navController = navController,
-            startDestination = "login",
-            modifier = Modifier.padding(innerPadding)
-        ) {
-            composable("main") { MainScreen(navController) }
-
-            composable("location") { LocationScreen(navController) }
-
-            composable("notifications") { NotificationsScreen(navController) }
-
-            composable("login") { LoginScreen(navController) }
+        composable("location") {
+            LocationScreen(navController)
+        }
+        composable("notification") {
+            NotificationsScreen(navController)
         }
     }
 }
 
-@Composable
+@Composable     // ui của bottom navigation
 fun AppBottomNavigation(navController: NavHostController) {
     val navBackStackEntry by navController.currentBackStackEntryAsState()
     val currentRoute = navBackStackEntry?.destination?.route
@@ -84,50 +72,57 @@ fun AppBottomNavigation(navController: NavHostController) {
         )
     )
 
-    NavigationBar(
-        containerColor = Color(0xFF4CAF50),
-        tonalElevation = 8.dp,
+    Box (
         modifier = Modifier
-            .fillMaxWidth(0.9f)
-            .padding(horizontal = 30.dp)
-            .clip(RoundedCornerShape(
-                topStart = 40.dp,
-                topEnd = 40.dp,
-                bottomStart = 40.dp,
-                bottomEnd = 40.dp
-            ))
+            .fillMaxWidth()
+            .wrapContentHeight()
+            .wrapContentSize(Alignment.BottomCenter)
+            .padding(bottom = 20.dp), // Chỉ để padding bottom
+        contentAlignment = Alignment.BottomCenter // Căn giữa theo chiều ngang
     ) {
-        navItems.forEach { item ->
-            NavigationBarItem(
-                icon = {
-                    Icon(
-                        imageVector = item.icon,
-                        contentDescription = item.label,
-                        tint = if (currentRoute == item.route) Color.White else Color.Black
+        NavigationBar(
+            containerColor = Color(0xFF4CAF50),
+            tonalElevation = 8.dp,
+            modifier = Modifier
+                .fillMaxWidth(0.9f)         // rộng 90%
+                .height(100.dp)
+                .padding(horizontal = 16.dp)
+                .padding(bottom = 20.dp)
+                .wrapContentSize(Alignment.BottomCenter)
+                .clip(RoundedCornerShape(40.dp)),  // bo góc cho thanh
+        ) {
+            navItems.forEach { item ->
+                NavigationBarItem(
+                    icon = {
+                        Icon(
+                            imageVector = item.icon,
+                            contentDescription = item.label,
+                            tint = if (currentRoute == item.route) Color.White else Color.Black
+                        )
+                    },
+                    label = {
+                        Text(
+                            text = item.label,
+                            color = if (currentRoute == item.route) Color.White else Color.Black
+                        )
+                    },
+                    selected = currentRoute == item.route,
+                    onClick = {
+                        navController.navigate(item.route) {
+                            popUpTo(navController.graph.startDestinationId) { saveState = true }
+                            launchSingleTop = true
+                            restoreState = true
+                        }
+                    },
+                    colors = NavigationBarItemDefaults.colors(
+                        selectedIconColor = Color.White,
+                        unselectedIconColor = Color.Black,
+                        selectedTextColor = Color.White,
+                        unselectedTextColor = Color.Black,
+                        indicatorColor = Color(0xFF388E3C)
                     )
-                },
-                label = {
-                    Text(
-                        text = item.label,
-                        color = if (currentRoute == item.route) Color.White else Color.Black
-                    )
-                },
-                selected = currentRoute == item.route,
-                onClick = {
-                    navController.navigate(item.route) {
-                        popUpTo(navController.graph.startDestinationId) { saveState = true }
-                        launchSingleTop = true
-                        restoreState = true
-                    }
-                },
-                colors = NavigationBarItemDefaults.colors(
-                    selectedIconColor = Color.White,
-                    unselectedIconColor = Color.Black,
-                    selectedTextColor = Color.White,
-                    unselectedTextColor = Color.Black,
-                    indicatorColor = Color(0xFF388E3C)
                 )
-            )
+            }
         }
     }
 }
@@ -138,8 +133,16 @@ data class NavItem(
     val label: String
 )
 
-@Preview(showBackground = true)
+@Preview(showBackground = true, showSystemUi = true)
 @Composable
-fun PreviewTravelApp() {
-    TravelApp()
+fun PreviewAppBottomNavigation() {
+    Box(
+        modifier = Modifier
+            .fillMaxSize()
+            .wrapContentSize(Alignment.BottomCenter)
+    ) {
+        val navController = rememberNavController()
+
+        AppBottomNavigation(navController = navController)
+    }
 }

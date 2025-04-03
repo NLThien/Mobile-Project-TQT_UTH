@@ -28,12 +28,16 @@ import androidx.navigation.NavController
 import com.example.travel_application.R
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.rememberNavController
+import com.example.travel_application.ui.screen.MessageBox
+import com.example.travel_application.accessibility.rememberMessageBoxState
 
 @Composable
-fun LoginScreen(navController: NavController) {
+fun LoginScreen(navController: NavController, onLoginSuccess : () -> Unit) {
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
     var passwordVisible by remember { mutableStateOf(false) }
+
+    val messageBox = rememberMessageBoxState()
 
     Box(
         modifier = Modifier
@@ -95,7 +99,7 @@ fun LoginScreen(navController: NavController) {
                 value = email,
                 onValueChange = { email = it },
                 modifier = Modifier.fillMaxWidth(),
-                label = { Text("Email", color = Color.White) },
+                label = { Text("Tên đăng nhập", color = Color.White) },
                 leadingIcon = {
                     Icon(
                         Icons.Default.Email,
@@ -154,8 +158,8 @@ fun LoginScreen(navController: NavController) {
             // Login Button
             Button(
                 onClick = {
-                /* Xử lý đăng nhập */
-                    navController.navigate("main")
+                    /* Xử lý đăng nhập */
+                    onLoginSuccess()
                 },
                 modifier = Modifier
                     .fillMaxWidth()
@@ -176,14 +180,19 @@ fun LoginScreen(navController: NavController) {
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.SpaceBetween
             ) {
-                TextButton(onClick = { /* Quên mật khẩu */ }) {
+                TextButton(onClick = {
+                    messageBox.show("Thông báo", "Chức năng này chưa được cài đặt")
+                }) {
                     Text(
                         "Quên mật khẩu?",
                         color = Color.White.copy(alpha = 0.8f)
                     )
                 }
 
-                TextButton(onClick = { navController.navigate("register") }) {
+                TextButton(onClick = {
+//                    navController.navigate("register")
+                    messageBox.show("Thông báo", "Chức năng này chưa được cài đặt")
+                }) {
                     Text(
                         "Đăng ký tài khoản",
                         color = Color.White,
@@ -199,5 +208,5 @@ fun LoginScreen(navController: NavController) {
 @Composable
 fun PreviewLoginScreen() {
     val navController = rememberNavController()
-    LoginScreen(navController = navController)
+    LoginScreen(navController = navController, onLoginSuccess = {})
 }

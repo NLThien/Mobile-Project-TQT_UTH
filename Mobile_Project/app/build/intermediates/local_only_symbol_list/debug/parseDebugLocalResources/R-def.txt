@@ -16,6 +16,7 @@ color white
 dimen activity_horizontal_margin
 dimen activity_vertical_margin
 drawable app_logo
+drawable ic_back_blue
 drawable ic_launcher_background
 drawable ic_launcher_foreground
 drawable ninhbinh_background
@@ -24,6 +25,13 @@ drawable travel_background_nt
 mipmap ic_launcher
 mipmap ic_launcher_round
 string app_name
+string default_web_client_id
+string gcm_defaultSenderId
+string google_api_key
+string google_app_id
+string google_crash_reporting_api_key
+string google_storage_bucket
+string project_id
 string title_home
 string title_location
 string title_notifications

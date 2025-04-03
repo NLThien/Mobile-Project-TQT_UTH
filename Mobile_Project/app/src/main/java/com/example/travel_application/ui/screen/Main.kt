@@ -20,6 +20,8 @@ import androidx.compose.ui.unit.sp
 
 @Composable
 fun MainScreen(navController: NavController) {
+    val navController = NavController(LocalContext.current)
+
     Column(
         modifier = Modifier.fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally,
