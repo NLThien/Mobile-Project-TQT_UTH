@@ -1,9 +1,7 @@
 package com.example.travel_application.ui.screen
 
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
-import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -13,7 +11,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.travel_application.R
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.sp
 import androidx.compose.foundation.shape.CircleShape
@@ -27,21 +24,16 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.material3.Card
 import androidx.compose.material3.Icon
 import androidx.navigation.compose.rememberNavController
-import androidx.navigation.NavHostController
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.setValue
 import androidx.compose.runtime.remember
 import androidx.compose.foundation.lazy.items
 import com.example.travel_application.accessibility.rememberMessageBoxState
+import androidx.compose.ui.text.style.TextOverflow
 
 import com.example.travel_application.db.TravelDeal
 import com.example.travel_application.db.TravelPlace
 import com.example.travel_application.db.TravelCategory
 
 import com.example.travel_application.ui.navigation.SearchBar
-import com.example.travel_application.accessibility.rememberMessageBoxState
-
 
 @Composable
 fun MainScreen(navController: NavController) {
@@ -60,7 +52,7 @@ fun MainScreen(navController: NavController) {
             verticalAlignment = Alignment.CenterVertically
         ) {
             Icon(
-                painter = painterResource(id = R.drawable.ic_back_blue),
+                painter = painterResource(id = R.drawable.ic_avatar_home),
                 contentDescription = "Back",
                 modifier = Modifier.size(40.dp)
                     .clickable(
@@ -123,7 +115,8 @@ fun PopularPlaces() {
     val places = listOf(
         TravelPlace(1, "Vịnh Hạ Long", "Quảng Ninh", R.drawable.travel_background, 4.8f, "1.200.000 VND"),
         TravelPlace(2, "Phố cổ Hội An", "Quảng Nam", R.drawable.travel_background_nt, 4.7f, "800.000 VND"),
-        TravelPlace(3, "Đà Lạt", "Lâm Đồng", R.drawable.ninhbinh_background, 4.6f, "1.500.000 VND")
+        TravelPlace(3, "Khu du lịch Tam Cốc-Bích Động", "Ninh Bình", R.drawable.ninhbinh_background, 4.6f, "1.500.000 VND"),
+        TravelPlace(4, "Đà Lạt", "Lâm Đồng", R.drawable.ninhbinh_background, 4.6f, "1.500.000 VND")
     )
 
     LazyRow(
@@ -146,10 +139,10 @@ fun TravelCategories() {
     val messageBox = rememberMessageBoxState()
 
     val categories = listOf(
-        TravelCategory(1, "Tour", R.drawable.ic_back_blue),
-        TravelCategory(2, "Khách sạn", R.drawable.ic_back_blue),
-        TravelCategory(3, "Ẩm thực", R.drawable.ic_back_blue),
-        TravelCategory(4, "Vé máy bay", R.drawable.ic_back_blue)
+        TravelCategory(1, "Tour", R.drawable.ic_tour),
+        TravelCategory(2, "Khách sạn", R.drawable.ic_hotel),
+        TravelCategory(3, "Ẩm thực", R.drawable.ic_restaurant),
+        TravelCategory(4, "Vé máy bay", R.drawable.ic_ticket)
     )
 
     LazyRow(
@@ -197,7 +190,10 @@ fun SpecialDeals() {
     val deals = remember {
         listOf(
             TravelDeal(1, "Giảm 30% tour Đà Nẵng", "30% OFF", R.drawable.travel_background),
-            TravelDeal(2, "Combo 2N1Đ Phú Quốc", "1.500.000 VND", R.drawable.travel_background)
+            TravelDeal(2, "Cửa khẩu quốc tế Mộc Bài", "Trải nghiệm CamPuChia", R.drawable.travel_background),
+            TravelDeal(3, "Combo 2N1Đ Phú Quốc", "1.500.000 VND", R.drawable.travel_background),
+            TravelDeal(4, "Chào mừng 30/04", "Up sọt 3que", R.drawable.travel_background),
+            TravelDeal(5, "Combo 3 ngày 2 đêm", "Hạ Long Quảng Ninh", R.drawable.travel_background)
         )
     }
 
@@ -242,12 +238,18 @@ fun PlaceCard(place: TravelPlace) {
             Column(modifier = Modifier.padding(8.dp)) {
                 Text(
                     text = place.name,
-                    fontWeight = FontWeight.Bold
+                    fontWeight = FontWeight.Bold,
+                    maxLines = 1, // Giới hạn chỉ 1 dòng
+                    modifier = Modifier.fillMaxWidth(), // Giới hạn chiều rộng tối đa
+                    overflow = TextOverflow.Ellipsis // Thêm "..." nếu vượt quá
                 )
                 Text(
                     text = place.location,
                     fontSize = 12.sp,
-                    color = Color.Gray
+                    color = Color.Gray,
+                    maxLines = 1, // Giới hạn chỉ 1 dòng
+                    modifier = Modifier.fillMaxWidth(), // Giới hạn chiều rộng tối đa
+                    overflow = TextOverflow.Ellipsis // Thêm "..." nếu vượt quá
                 )
                 Row(
                     verticalAlignment = Alignment.CenterVertically,
@@ -305,12 +307,18 @@ fun DealCard(deal: TravelDeal) {
                 text = deal.discount,
                 color = Color.White,
                 fontWeight = FontWeight.Bold,
-                fontSize = 18.sp
+                fontSize = 18.sp,
+                maxLines = 1, // Giới hạn chỉ 1 dòng
+                modifier = Modifier.fillMaxWidth(), // Giới hạn chiều rộng tối đa
+                overflow = TextOverflow.Ellipsis // Thêm "..." nếu vượt quá
             )
             Text(
                 text = deal.title,
                 color = Color.White,
-                fontWeight = FontWeight.Bold
+                fontWeight = FontWeight.Bold,
+                maxLines = 1, // Giới hạn chỉ 1 dòng
+                modifier = Modifier.fillMaxWidth(), // Giới hạn chiều rộng tối đa
+                overflow = TextOverflow.Ellipsis // Thêm "..." nếu vượt quá
             )
         }
     }

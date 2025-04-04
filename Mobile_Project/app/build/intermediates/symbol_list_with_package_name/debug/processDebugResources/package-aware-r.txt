@@ -1780,6 +1780,7 @@ drawable abc_vector_test
 drawable app_logo
 drawable avd_hide_password
 drawable avd_show_password
+drawable backgrounnd_app_ic
 drawable btn_checkbox_checked_mtrl
 drawable btn_checkbox_checked_to_unchecked_mtrl_animation
 drawable btn_checkbox_unchecked_mtrl
@@ -1825,6 +1826,9 @@ drawable fui_ic_twitter_bird_white_24dp
 drawable fui_ic_yahoo_24dp
 drawable googleg_disabled_color_18
 drawable googleg_standard_color_18
+drawable ic_avatar
+drawable ic_avatar_background
+drawable ic_avatar_home
 drawable ic_back_blue
 drawable ic_call_answer
 drawable ic_call_answer_low
@@ -1833,6 +1837,7 @@ drawable ic_call_answer_video_low
 drawable ic_call_decline
 drawable ic_call_decline_low
 drawable ic_clock_black_24dp
+drawable ic_hotel
 drawable ic_keyboard_black_24dp
 drawable ic_launcher_background
 drawable ic_launcher_foreground
@@ -1843,6 +1848,9 @@ drawable ic_mtrl_chip_close_circle
 drawable ic_other_sign_in
 drawable ic_passkey
 drawable ic_password
+drawable ic_restaurant
+drawable ic_ticket
+drawable ic_tour
 drawable material_cursor_drawable
 drawable material_ic_calendar_black_24dp
 drawable material_ic_clear_black_24dp
@@ -2580,8 +2588,9 @@ layout text_view_with_line_height_from_layout
 layout text_view_with_line_height_from_style
 layout text_view_with_theme_line_height
 layout text_view_without_line_height
-mipmap ic_launcher
-mipmap ic_launcher_round
+mipmap ic_app
+mipmap ic_app_round
+mipmap ic_app_square
 plurals fui_error_weak_password
 plurals mtrl_badge_content_description
 raw firebase_common_keep
