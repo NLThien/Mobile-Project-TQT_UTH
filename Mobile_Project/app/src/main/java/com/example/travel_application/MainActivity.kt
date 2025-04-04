@@ -56,7 +56,7 @@ fun TravelApp() {
 
     NavHost(
         navController = navController,
-        startDestination = if (isLoggedIn.value) "main" else "login"
+        startDestination = if (isLoggedIn.value) "main" else "login",
     ) {
         composable("login") {
             LoginScreen(
@@ -99,6 +99,7 @@ fun TravelApp() {
                 }
             }
         }
+
     }
 }
 
