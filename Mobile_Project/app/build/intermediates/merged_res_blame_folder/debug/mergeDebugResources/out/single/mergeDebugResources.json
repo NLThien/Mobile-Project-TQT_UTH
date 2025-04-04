@@ -1,86 +1,254 @@
 [
     {
-        "merged": "com.example.travel_application.app-debug-84:/mipmap-hdpi_ic_launcher_round.webp.flat",
-        "source": "com.example.travel_application.app-main-86:/mipmap-hdpi/ic_launcher_round.webp"
+        "merged": "com.example.travel_application.app-debug-84:/mipmap-mdpi_ic_app_square.webp.flat",
+        "source": "com.example.travel_application.app-main-86:/mipmap-mdpi/ic_app_square.webp"
     },
     {
-        "merged": "com.example.travel_application.app-debug-84:/mipmap-mdpi_ic_launcher.webp.flat",
-        "source": "com.example.travel_application.app-main-86:/mipmap-mdpi/ic_launcher.webp"
+        "merged": "com.example.travel_application.app-debug-84:/mipmap-anydpi-v26_ic_app.xml.flat",
+        "source": "com.example.travel_application.app-main-86:/mipmap-anydpi-v26/ic_app.xml"
     },
     {
-        "merged": "com.example.travel_application.app-debug-84:/mipmap-anydpi-v26_ic_launcher_round.xml.flat",
-        "source": "com.example.travel_application.app-main-86:/mipmap-anydpi-v26/ic_launcher_round.xml"
+        "merged": "com.example.travel_application.app-debug-84:/mipmap-xxxhdpi_ic_app_round.webp.flat",
+        "source": "com.example.travel_application.app-main-86:/mipmap-xxxhdpi/ic_app_round.webp"
     },
     {
-        "merged": "com.example.travel_application.app-debug-84:/mipmap-xxhdpi_ic_launcher.webp.flat",
-        "source": "com.example.travel_application.app-main-86:/mipmap-xxhdpi/ic_launcher.webp"
+        "merged": "C:\\Users\\ROG\\.gradle\\daemon\\8.11.1\\com.example.travel_application.app-debug-84:\\mipmap-mdpi_ic_avatar.webp.flat",
+        "source": "C:\\Users\\ROG\\.gradle\\daemon\\8.11.1\\com.example.travel_application.app-main-86:\\mipmap-mdpi\\ic_avatar.webp"
     },
     {
-        "merged": "com.example.travel_application.app-debug-84:/mipmap-xxxhdpi_ic_launcher_round.webp.flat",
-        "source": "com.example.travel_application.app-main-86:/mipmap-xxxhdpi/ic_launcher_round.webp"
+        "merged": "C:\\Users\\ROG\\.gradle\\daemon\\8.11.1\\com.example.travel_application.app-debug-84:\\mipmap-hdpi_ic_avatar.webp.flat",
+        "source": "C:\\Users\\ROG\\.gradle\\daemon\\8.11.1\\com.example.travel_application.app-main-86:\\mipmap-hdpi\\ic_avatar.webp"
     },
     {
-        "merged": "com.example.travel_application.app-debug-84:/mipmap-anydpi-v26_ic_launcher.xml.flat",
-        "source": "com.example.travel_application.app-main-86:/mipmap-anydpi-v26/ic_launcher.xml"
+        "merged": "C:\\Users\\ROG\\.gradle\\daemon\\8.11.1\\com.example.travel_application.app-debug-84:\\mipmap-xxhdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\ROG\\.gradle\\daemon\\8.11.1\\com.example.travel_application.app-main-86:\\mipmap-xxhdpi\\ic_launcher_round.webp"
     },
     {
-        "merged": "com.example.travel_application.app-debug-84:/xml_data_extraction_rules.xml.flat",
-        "source": "com.example.travel_application.app-main-86:/xml/data_extraction_rules.xml"
+        "merged": "C:\\Users\\ROG\\.gradle\\daemon\\8.11.1\\com.example.travel_application.app-debug-84:\\drawable_travel_background_nt.png.flat",
+        "source": "C:\\Users\\ROG\\.gradle\\daemon\\8.11.1\\com.example.travel_application.app-main-86:\\drawable\\travel_background_nt.png"
     },
     {
-        "merged": "com.example.travel_application.app-debug-84:/drawable_app_logo.png.flat",
-        "source": "com.example.travel_application.app-main-86:/drawable/app_logo.png"
+        "merged": "com.example.travel_application.app-debug-84:/mipmap-hdpi_ic_app_round.webp.flat",
+        "source": "com.example.travel_application.app-main-86:/mipmap-hdpi/ic_app_round.webp"
     },
     {
-        "merged": "com.example.travel_application.app-debug-84:/mipmap-xhdpi_ic_launcher.webp.flat",
-        "source": "com.example.travel_application.app-main-86:/mipmap-xhdpi/ic_launcher.webp"
+        "merged": "C:\\Users\\ROG\\.gradle\\daemon\\8.11.1\\com.example.travel_application.app-debug-84:\\mipmap-xxhdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\ROG\\.gradle\\daemon\\8.11.1\\com.example.travel_application.app-main-86:\\mipmap-xxhdpi\\ic_launcher.webp"
     },
     {
-        "merged": "com.example.travel_application.app-debug-84:/drawable_ic_back_blue.png.flat",
-        "source": "com.example.travel_application.app-main-86:/drawable/ic_back_blue.png"
+        "merged": "C:\\Users\\ROG\\.gradle\\daemon\\8.11.1\\com.example.travel_application.app-debug-84:\\mipmap-xxxhdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\ROG\\.gradle\\daemon\\8.11.1\\com.example.travel_application.app-main-86:\\mipmap-xxxhdpi\\ic_launcher.webp"
     },
     {
-        "merged": "com.example.travel_application.app-debug-84:/mipmap-mdpi_ic_launcher_round.webp.flat",
-        "source": "com.example.travel_application.app-main-86:/mipmap-mdpi/ic_launcher_round.webp"
+        "merged": "C:\\Users\\ROG\\.gradle\\daemon\\8.11.1\\com.example.travel_application.app-debug-84:\\mipmap-xxxhdpi_ic_avatar.webp.flat",
+        "source": "C:\\Users\\ROG\\.gradle\\daemon\\8.11.1\\com.example.travel_application.app-main-86:\\mipmap-xxxhdpi\\ic_avatar.webp"
     },
     {
-        "merged": "com.example.travel_application.app-debug-84:/drawable_travel_background_nt.png.flat",
-        "source": "com.example.travel_application.app-main-86:/drawable/travel_background_nt.png"
+        "merged": "C:\\Users\\ROG\\.gradle\\daemon\\8.11.1\\com.example.travel_application.app-debug-84:\\mipmap-xhdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\ROG\\.gradle\\daemon\\8.11.1\\com.example.travel_application.app-main-86:\\mipmap-xhdpi\\ic_launcher.webp"
     },
     {
-        "merged": "com.example.travel_application.app-debug-84:/mipmap-hdpi_ic_launcher.webp.flat",
-        "source": "com.example.travel_application.app-main-86:/mipmap-hdpi/ic_launcher.webp"
+        "merged": "com.example.travel_application.app-debug-84:/mipmap-hdpi_ic_app_square.webp.flat",
+        "source": "com.example.travel_application.app-main-86:/mipmap-hdpi/ic_app_square.webp"
     },
     {
-        "merged": "com.example.travel_application.app-debug-84:/mipmap-xxhdpi_ic_launcher_round.webp.flat",
-        "source": "com.example.travel_application.app-main-86:/mipmap-xxhdpi/ic_launcher_round.webp"
+        "merged": "C:\\Users\\ROG\\.gradle\\daemon\\8.11.1\\com.example.travel_application.app-debug-84:\\xml_backup_rules.xml.flat",
+        "source": "C:\\Users\\ROG\\.gradle\\daemon\\8.11.1\\com.example.travel_application.app-main-86:\\xml\\backup_rules.xml"
     },
     {
-        "merged": "com.example.travel_application.app-debug-84:/mipmap-xxxhdpi_ic_launcher.webp.flat",
-        "source": "com.example.travel_application.app-main-86:/mipmap-xxxhdpi/ic_launcher.webp"
+        "merged": "com.example.travel_application.app-debug-84:/mipmap-xxhdpi_ic_app.webp.flat",
+        "source": "com.example.travel_application.app-main-86:/mipmap-xxhdpi/ic_app.webp"
     },
     {
-        "merged": "com.example.travel_application.app-debug-84:/drawable_travel_background.jpg.flat",
-        "source": "com.example.travel_application.app-main-86:/drawable/travel_background.jpg"
+        "merged": "C:\\Users\\ROG\\.gradle\\daemon\\8.11.1\\com.example.travel_application.app-debug-84:\\mipmap-xxxhdpi_ic_avatar_round.webp.flat",
+        "source": "C:\\Users\\ROG\\.gradle\\daemon\\8.11.1\\com.example.travel_application.app-main-86:\\mipmap-xxxhdpi\\ic_avatar_round.webp"
     },
     {
-        "merged": "com.example.travel_application.app-debug-84:/drawable_ic_launcher_foreground.xml.flat",
-        "source": "com.example.travel_application.app-main-86:/drawable/ic_launcher_foreground.xml"
+        "merged": "C:\\Users\\ROG\\.gradle\\daemon\\8.11.1\\com.example.travel_application.app-debug-84:\\drawable_ic_back_blue.png.flat",
+        "source": "C:\\Users\\ROG\\.gradle\\daemon\\8.11.1\\com.example.travel_application.app-main-86:\\drawable\\ic_back_blue.png"
     },
     {
-        "merged": "com.example.travel_application.app-debug-84:/drawable_ninhbinh_background.jpg.flat",
-        "source": "com.example.travel_application.app-main-86:/drawable/ninhbinh_background.jpg"
+        "merged": "C:\\Users\\ROG\\.gradle\\daemon\\8.11.1\\com.example.travel_application.app-debug-84:\\mipmap-xxhdpi_ic_avatar_round.webp.flat",
+        "source": "C:\\Users\\ROG\\.gradle\\daemon\\8.11.1\\com.example.travel_application.app-main-86:\\mipmap-xxhdpi\\ic_avatar_round.webp"
     },
     {
-        "merged": "com.example.travel_application.app-debug-84:/drawable_ic_launcher_background.xml.flat",
-        "source": "com.example.travel_application.app-main-86:/drawable/ic_launcher_background.xml"
+        "merged": "com.example.travel_application.app-debug-84:/mipmap-xhdpi_ic_app_square.webp.flat",
+        "source": "com.example.travel_application.app-main-86:/mipmap-xhdpi/ic_app_square.webp"
     },
     {
-        "merged": "com.example.travel_application.app-debug-84:/mipmap-xhdpi_ic_launcher_round.webp.flat",
-        "source": "com.example.travel_application.app-main-86:/mipmap-xhdpi/ic_launcher_round.webp"
+        "merged": "C:\\Users\\ROG\\.gradle\\daemon\\8.11.1\\com.example.travel_application.app-debug-84:\\mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "C:\\Users\\ROG\\.gradle\\daemon\\8.11.1\\com.example.travel_application.app-main-86:\\mipmap-anydpi-v26\\ic_launcher_round.xml"
     },
     {
-        "merged": "com.example.travel_application.app-debug-84:/xml_backup_rules.xml.flat",
-        "source": "com.example.travel_application.app-main-86:/xml/backup_rules.xml"
+        "merged": "C:\\Users\\ROG\\.gradle\\daemon\\8.11.1\\com.example.travel_application.app-debug-84:\\mipmap-mdpi_ic_avatar_round.webp.flat",
+        "source": "C:\\Users\\ROG\\.gradle\\daemon\\8.11.1\\com.example.travel_application.app-main-86:\\mipmap-mdpi\\ic_avatar_round.webp"
+    },
+    {
+        "merged": "com.example.travel_application.app-debug-84:/mipmap-hdpi_ic_app.webp.flat",
+        "source": "com.example.travel_application.app-main-86:/mipmap-hdpi/ic_app.webp"
+    },
+    {
+        "merged": "C:\\Users\\ROG\\.gradle\\daemon\\8.11.1\\com.example.travel_application.app-debug-84:\\drawable_ic_launcher_foreground.xml.flat",
+        "source": "C:\\Users\\ROG\\.gradle\\daemon\\8.11.1\\com.example.travel_application.app-main-86:\\drawable\\ic_launcher_foreground.xml"
+    },
+    {
+        "merged": "C:\\Users\\ROG\\.gradle\\daemon\\8.11.1\\com.example.travel_application.app-debug-84:\\mipmap-anydpi-v26_ic_avatar_round.xml.flat",
+        "source": "C:\\Users\\ROG\\.gradle\\daemon\\8.11.1\\com.example.travel_application.app-main-86:\\mipmap-anydpi-v26\\ic_avatar_round.xml"
+    },
+    {
+        "merged": "C:\\Users\\ROG\\.gradle\\daemon\\8.11.1\\com.example.travel_application.app-debug-84:\\drawable_ninhbinh_background.jpg.flat",
+        "source": "C:\\Users\\ROG\\.gradle\\daemon\\8.11.1\\com.example.travel_application.app-main-86:\\drawable\\ninhbinh_background.jpg"
+    },
+    {
+        "merged": "C:\\Users\\ROG\\.gradle\\daemon\\8.11.1\\com.example.travel_application.app-debug-84:\\xml_data_extraction_rules.xml.flat",
+        "source": "C:\\Users\\ROG\\.gradle\\daemon\\8.11.1\\com.example.travel_application.app-main-86:\\xml\\data_extraction_rules.xml"
+    },
+    {
+        "merged": "C:\\Users\\ROG\\.gradle\\daemon\\8.11.1\\com.example.travel_application.app-debug-84:\\mipmap-xhdpi_ic_avatar_foreground.webp.flat",
+        "source": "C:\\Users\\ROG\\.gradle\\daemon\\8.11.1\\com.example.travel_application.app-main-86:\\mipmap-xhdpi\\ic_avatar_foreground.webp"
+    },
+    {
+        "merged": "C:\\Users\\ROG\\.gradle\\daemon\\8.11.1\\com.example.travel_application.app-debug-84:\\mipmap-hdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\ROG\\.gradle\\daemon\\8.11.1\\com.example.travel_application.app-main-86:\\mipmap-hdpi\\ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.example.travel_application.app-debug-84:/mipmap-xxhdpi_ic_app_square.webp.flat",
+        "source": "com.example.travel_application.app-main-86:/mipmap-xxhdpi/ic_app_square.webp"
+    },
+    {
+        "merged": "C:\\Users\\ROG\\.gradle\\daemon\\8.11.1\\com.example.travel_application.app-debug-84:\\mipmap-xxhdpi_ic_avatar_foreground.webp.flat",
+        "source": "C:\\Users\\ROG\\.gradle\\daemon\\8.11.1\\com.example.travel_application.app-main-86:\\mipmap-xxhdpi\\ic_avatar_foreground.webp"
+    },
+    {
+        "merged": "C:\\Users\\ROG\\.gradle\\daemon\\8.11.1\\com.example.travel_application.app-debug-84:\\mipmap-xhdpi_ic_avatar.webp.flat",
+        "source": "C:\\Users\\ROG\\.gradle\\daemon\\8.11.1\\com.example.travel_application.app-main-86:\\mipmap-xhdpi\\ic_avatar.webp"
+    },
+    {
+        "merged": "com.example.travel_application.app-debug-84:/mipmap-mdpi_ic_app_round.webp.flat",
+        "source": "com.example.travel_application.app-main-86:/mipmap-mdpi/ic_app_round.webp"
+    },
+    {
+        "merged": "com.example.travel_application.app-debug-84:/mipmap-xhdpi_ic_app_round.webp.flat",
+        "source": "com.example.travel_application.app-main-86:/mipmap-xhdpi/ic_app_round.webp"
+    },
+    {
+        "merged": "com.example.travel_application.app-debug-84:/drawable_ic_avatar_background.xml.flat",
+        "source": "com.example.travel_application.app-main-86:/drawable/ic_avatar_background.xml"
+    },
+    {
+        "merged": "C:\\Users\\ROG\\.gradle\\daemon\\8.11.1\\com.example.travel_application.app-debug-84:\\mipmap-xhdpi_ic_avatar_round.webp.flat",
+        "source": "C:\\Users\\ROG\\.gradle\\daemon\\8.11.1\\com.example.travel_application.app-main-86:\\mipmap-xhdpi\\ic_avatar_round.webp"
+    },
+    {
+        "merged": "C:\\Users\\ROG\\.gradle\\daemon\\8.11.1\\com.example.travel_application.app-debug-84:\\mipmap-xxxhdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\ROG\\.gradle\\daemon\\8.11.1\\com.example.travel_application.app-main-86:\\mipmap-xxxhdpi\\ic_launcher_round.webp"
+    },
+    {
+        "merged": "C:\\Users\\ROG\\.gradle\\daemon\\8.11.1\\com.example.travel_application.app-debug-84:\\mipmap-anydpi-v26_ic_avatar.xml.flat",
+        "source": "C:\\Users\\ROG\\.gradle\\daemon\\8.11.1\\com.example.travel_application.app-main-86:\\mipmap-anydpi-v26\\ic_avatar.xml"
+    },
+    {
+        "merged": "C:\\Users\\ROG\\.gradle\\daemon\\8.11.1\\com.example.travel_application.app-debug-84:\\mipmap-xxxhdpi_ic_avatar_foreground.webp.flat",
+        "source": "C:\\Users\\ROG\\.gradle\\daemon\\8.11.1\\com.example.travel_application.app-main-86:\\mipmap-xxxhdpi\\ic_avatar_foreground.webp"
+    },
+    {
+        "merged": "C:\\Users\\ROG\\.gradle\\daemon\\8.11.1\\com.example.travel_application.app-debug-84:\\drawable_ic_avatar_home.xml.flat",
+        "source": "C:\\Users\\ROG\\.gradle\\daemon\\8.11.1\\com.example.travel_application.app-main-86:\\drawable\\ic_avatar_home.xml"
+    },
+    {
+        "merged": "C:\\Users\\ROG\\.gradle\\daemon\\8.11.1\\com.example.travel_application.app-debug-84:\\drawable_ic_hotel.jpg.flat",
+        "source": "C:\\Users\\ROG\\.gradle\\daemon\\8.11.1\\com.example.travel_application.app-main-86:\\drawable\\ic_hotel.jpg"
+    },
+    {
+        "merged": "C:\\Users\\ROG\\.gradle\\daemon\\8.11.1\\com.example.travel_application.app-debug-84:\\drawable_ic_avatar.jpg.flat",
+        "source": "C:\\Users\\ROG\\.gradle\\daemon\\8.11.1\\com.example.travel_application.app-main-86:\\drawable\\ic_avatar.jpg"
+    },
+    {
+        "merged": "com.example.travel_application.app-debug-84:/mipmap-xxxhdpi_ic_app.webp.flat",
+        "source": "com.example.travel_application.app-main-86:/mipmap-xxxhdpi/ic_app.webp"
+    },
+    {
+        "merged": "com.example.travel_application.app-debug-84:/mipmap-xxxhdpi_ic_app_square.webp.flat",
+        "source": "com.example.travel_application.app-main-86:/mipmap-xxxhdpi/ic_app_square.webp"
+    },
+    {
+        "merged": "C:\\Users\\ROG\\.gradle\\daemon\\8.11.1\\com.example.travel_application.app-debug-84:\\drawable_ic_restaurant.png.flat",
+        "source": "C:\\Users\\ROG\\.gradle\\daemon\\8.11.1\\com.example.travel_application.app-main-86:\\drawable\\ic_restaurant.png"
+    },
+    {
+        "merged": "com.example.travel_application.app-debug-84:/drawable_backgrounnd_app_ic.xml.flat",
+        "source": "com.example.travel_application.app-main-86:/drawable/backgrounnd_app_ic.xml"
+    },
+    {
+        "merged": "C:\\Users\\ROG\\.gradle\\daemon\\8.11.1\\com.example.travel_application.app-debug-84:\\mipmap-hdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\ROG\\.gradle\\daemon\\8.11.1\\com.example.travel_application.app-main-86:\\mipmap-hdpi\\ic_launcher.webp"
+    },
+    {
+        "merged": "com.example.travel_application.app-debug-84:/mipmap-xxhdpi_ic_app_round.webp.flat",
+        "source": "com.example.travel_application.app-main-86:/mipmap-xxhdpi/ic_app_round.webp"
+    },
+    {
+        "merged": "C:\\Users\\ROG\\.gradle\\daemon\\8.11.1\\com.example.travel_application.app-debug-84:\\mipmap-hdpi_ic_avatar_foreground.webp.flat",
+        "source": "C:\\Users\\ROG\\.gradle\\daemon\\8.11.1\\com.example.travel_application.app-main-86:\\mipmap-hdpi\\ic_avatar_foreground.webp"
+    },
+    {
+        "merged": "C:\\Users\\ROG\\.gradle\\daemon\\8.11.1\\com.example.travel_application.app-debug-84:\\drawable_travel_background.jpg.flat",
+        "source": "C:\\Users\\ROG\\.gradle\\daemon\\8.11.1\\com.example.travel_application.app-main-86:\\drawable\\travel_background.jpg"
+    },
+    {
+        "merged": "C:\\Users\\ROG\\.gradle\\daemon\\8.11.1\\com.example.travel_application.app-debug-84:\\mipmap-mdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\ROG\\.gradle\\daemon\\8.11.1\\com.example.travel_application.app-main-86:\\mipmap-mdpi\\ic_launcher.webp"
+    },
+    {
+        "merged": "C:\\Users\\ROG\\.gradle\\daemon\\8.11.1\\com.example.travel_application.app-debug-84:\\drawable_app_logo.png.flat",
+        "source": "C:\\Users\\ROG\\.gradle\\daemon\\8.11.1\\com.example.travel_application.app-main-86:\\drawable\\app_logo.png"
+    },
+    {
+        "merged": "com.example.travel_application.app-debug-84:/mipmap-xhdpi_ic_app.webp.flat",
+        "source": "com.example.travel_application.app-main-86:/mipmap-xhdpi/ic_app.webp"
+    },
+    {
+        "merged": "C:\\Users\\ROG\\.gradle\\daemon\\8.11.1\\com.example.travel_application.app-debug-84:\\mipmap-hdpi_ic_avatar_round.webp.flat",
+        "source": "C:\\Users\\ROG\\.gradle\\daemon\\8.11.1\\com.example.travel_application.app-main-86:\\mipmap-hdpi\\ic_avatar_round.webp"
+    },
+    {
+        "merged": "C:\\Users\\ROG\\.gradle\\daemon\\8.11.1\\com.example.travel_application.app-debug-84:\\drawable_ic_ticket.png.flat",
+        "source": "C:\\Users\\ROG\\.gradle\\daemon\\8.11.1\\com.example.travel_application.app-main-86:\\drawable\\ic_ticket.png"
+    },
+    {
+        "merged": "com.example.travel_application.app-debug-84:/mipmap-anydpi-v26_ic_app_round.xml.flat",
+        "source": "com.example.travel_application.app-main-86:/mipmap-anydpi-v26/ic_app_round.xml"
+    },
+    {
+        "merged": "C:\\Users\\ROG\\.gradle\\daemon\\8.11.1\\com.example.travel_application.app-debug-84:\\drawable_ic_tour.jpg.flat",
+        "source": "C:\\Users\\ROG\\.gradle\\daemon\\8.11.1\\com.example.travel_application.app-main-86:\\drawable\\ic_tour.jpg"
+    },
+    {
+        "merged": "C:\\Users\\ROG\\.gradle\\daemon\\8.11.1\\com.example.travel_application.app-debug-84:\\mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "C:\\Users\\ROG\\.gradle\\daemon\\8.11.1\\com.example.travel_application.app-main-86:\\mipmap-anydpi-v26\\ic_launcher.xml"
+    },
+    {
+        "merged": "C:\\Users\\ROG\\.gradle\\daemon\\8.11.1\\com.example.travel_application.app-debug-84:\\mipmap-mdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\ROG\\.gradle\\daemon\\8.11.1\\com.example.travel_application.app-main-86:\\mipmap-mdpi\\ic_launcher_round.webp"
+    },
+    {
+        "merged": "C:\\Users\\ROG\\.gradle\\daemon\\8.11.1\\com.example.travel_application.app-debug-84:\\mipmap-xxhdpi_ic_avatar.webp.flat",
+        "source": "C:\\Users\\ROG\\.gradle\\daemon\\8.11.1\\com.example.travel_application.app-main-86:\\mipmap-xxhdpi\\ic_avatar.webp"
+    },
+    {
+        "merged": "com.example.travel_application.app-debug-84:/mipmap-mdpi_ic_app.webp.flat",
+        "source": "com.example.travel_application.app-main-86:/mipmap-mdpi/ic_app.webp"
+    },
+    {
+        "merged": "C:\\Users\\ROG\\.gradle\\daemon\\8.11.1\\com.example.travel_application.app-debug-84:\\mipmap-mdpi_ic_avatar_foreground.webp.flat",
+        "source": "C:\\Users\\ROG\\.gradle\\daemon\\8.11.1\\com.example.travel_application.app-main-86:\\mipmap-mdpi\\ic_avatar_foreground.webp"
+    },
+    {
+        "merged": "C:\\Users\\ROG\\.gradle\\daemon\\8.11.1\\com.example.travel_application.app-debug-84:\\drawable_ic_launcher_background.xml.flat",
+        "source": "C:\\Users\\ROG\\.gradle\\daemon\\8.11.1\\com.example.travel_application.app-main-86:\\drawable\\ic_launcher_background.xml"
+    },
+    {
+        "merged": "C:\\Users\\ROG\\.gradle\\daemon\\8.11.1\\com.example.travel_application.app-debug-84:\\mipmap-xhdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\ROG\\.gradle\\daemon\\8.11.1\\com.example.travel_application.app-main-86:\\mipmap-xhdpi\\ic_launcher_round.webp"
     }
 ]

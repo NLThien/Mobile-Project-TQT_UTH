@@ -75,12 +75,12 @@
 42        android:extractNativeLibs="false"
 43        android:fullBackupContent="@xml/backup_rules"
 43-->C:\learn\uthEx\nam3\ky2\mobile\Mobile_Project_Endterm\Mobile_Project\app\src\main\AndroidManifest.xml:9:9-54
-44        android:icon="@mipmap/ic_launcher"
-44-->C:\learn\uthEx\nam3\ky2\mobile\Mobile_Project_Endterm\Mobile_Project\app\src\main\AndroidManifest.xml:10:9-43
+44        android:icon="@mipmap/ic_app_square"
+44-->C:\learn\uthEx\nam3\ky2\mobile\Mobile_Project_Endterm\Mobile_Project\app\src\main\AndroidManifest.xml:10:9-45
 45        android:label="@string/app_name"
 45-->C:\learn\uthEx\nam3\ky2\mobile\Mobile_Project_Endterm\Mobile_Project\app\src\main\AndroidManifest.xml:11:9-41
-46        android:roundIcon="@mipmap/ic_launcher_round"
-46-->C:\learn\uthEx\nam3\ky2\mobile\Mobile_Project_Endterm\Mobile_Project\app\src\main\AndroidManifest.xml:12:9-54
+46        android:roundIcon="@mipmap/ic_app_round"
+46-->C:\learn\uthEx\nam3\ky2\mobile\Mobile_Project_Endterm\Mobile_Project\app\src\main\AndroidManifest.xml:12:9-49
 47        android:supportsRtl="true"
 47-->C:\learn\uthEx\nam3\ky2\mobile\Mobile_Project_Endterm\Mobile_Project\app\src\main\AndroidManifest.xml:13:9-35
 48        android:testOnly="true"
