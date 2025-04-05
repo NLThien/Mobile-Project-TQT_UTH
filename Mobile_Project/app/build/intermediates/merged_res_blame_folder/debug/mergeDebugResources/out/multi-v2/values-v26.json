@@ -1,21 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.travel_application.app-mergeDebugResources-82:/values-v26/values-v26.xml",
+            "outputFile": "com.example.travel_application.app-mergeDebugResources-84:/values-v26/values-v26.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\ROG\\.gradle\\caches\\8.11.1\\transforms\\52c7762975d122fc2c010e1be24a1176\\transformed\\appcompat-1.6.1\\res\\values-v26\\values-v26.xml",
-                    "from": {
-                        "startLines": "2,3,4,8,12,16",
-                        "startColumns": "4,4,4,4,4,4",
-                        "startOffsets": "55,130,217,381,557,796",
-                        "endLines": "2,3,7,11,15,16",
-                        "endColumns": "74,86,12,12,12,92",
-                        "endOffsets": "125,212,376,552,791,884"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\ROG\\.gradle\\caches\\8.11.1\\transforms\\5ecfd102f5ec10577162494bf6aa1f54\\transformed\\firebase-ui-auth-8.0.2\\res\\values-v26\\values-v26.xml",
+                    "source": "C:\\Users\\ROG\\.gradle\\caches\\8.11.1\\transforms\\c980013586fde6eb444e9d1097350d66\\transformed\\firebase-ui-auth-8.0.2\\res\\values-v26\\values-v26.xml",
                     "from": {
                         "startLines": "2,6,10,14",
                         "startColumns": "4,4,4,4",
@@ -31,6 +20,17 @@
                         "endLines": "20,24,28,32",
                         "endColumns": "12,12,12,12",
                         "endOffsets": "1082,1267,1460,1640"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\ROG\\.gradle\\caches\\8.11.1\\transforms\\2c26faf0a3bbd79bd09e5a0cd7439e2c\\transformed\\appcompat-1.6.1\\res\\values-v26\\values-v26.xml",
+                    "from": {
+                        "startLines": "2,3,4,8,12,16",
+                        "startColumns": "4,4,4,4,4,4",
+                        "startOffsets": "55,130,217,381,557,796",
+                        "endLines": "2,3,7,11,15,16",
+                        "endColumns": "74,86,12,12,12,92",
+                        "endOffsets": "125,212,376,552,791,884"
                     }
                 }
             ]

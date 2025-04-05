@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.travel_application.app-mergeDebugResources-82:/values-h550dp-port-v13/values-h550dp-port-v13.xml",
+            "outputFile": "com.example.travel_application.app-mergeDebugResources-84:/values-h550dp-port-v13/values-h550dp-port-v13.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\ROG\\.gradle\\caches\\8.11.1\\transforms\\05cdbc81ed4b6b9bddac2c5768f437a2\\transformed\\material-1.4.0\\res\\values-h550dp-port-v13\\values-h550dp-port-v13.xml",
+                    "source": "C:\\Users\\ROG\\.gradle\\caches\\8.11.1\\transforms\\fec73d0da90ed4f6e0593fa5bd3f9dc0\\transformed\\material-1.4.0\\res\\values-h550dp-port-v13\\values-h550dp-port-v13.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.travel_application.app-mergeDebugResources-82:/values-watch-v20/values-watch-v20.xml",
+            "outputFile": "com.example.travel_application.app-mergeDebugResources-84:/values-watch-v20/values-watch-v20.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\ROG\\.gradle\\caches\\8.11.1\\transforms\\52c7762975d122fc2c010e1be24a1176\\transformed\\appcompat-1.6.1\\res\\values-watch-v20\\values-watch-v20.xml",
+                    "source": "C:\\Users\\ROG\\.gradle\\caches\\8.11.1\\transforms\\2c26faf0a3bbd79bd09e5a0cd7439e2c\\transformed\\appcompat-1.6.1\\res\\values-watch-v20\\values-watch-v20.xml",
                     "from": {
                         "startLines": "2,5,8",
                         "startColumns": "4,4,4",
@@ -23,7 +23,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\ROG\\.gradle\\caches\\8.11.1\\transforms\\2da4b7e5baad1c56385e7ae21e856818\\transformed\\play-services-auth-20.7.0\\res\\values-watch-v20\\values.xml",
+                    "source": "C:\\Users\\ROG\\.gradle\\caches\\8.11.1\\transforms\\df06fa05641d1270f54a06f5798bf97f\\transformed\\play-services-auth-20.7.0\\res\\values-watch-v20\\values.xml",
                     "from": {
                         "startLines": "4,5,6,7,8,9,10,11",
                         "startColumns": "0,0,0,0,0,0,0,0",

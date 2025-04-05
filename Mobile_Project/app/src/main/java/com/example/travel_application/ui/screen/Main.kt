@@ -28,6 +28,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.foundation.lazy.items
 import com.example.travel_application.accessibility.rememberMessageBoxState
 import androidx.compose.ui.text.style.TextOverflow
+import com.google.android.gms.maps.model.LatLng
 
 import com.example.travel_application.db.TravelDeal
 import com.example.travel_application.db.TravelPlace
@@ -113,10 +114,10 @@ fun MainScreen(navController: NavController) {
 @Composable
 fun PopularPlaces() {
     val places = listOf(
-        TravelPlace(1, "Vịnh Hạ Long", "Quảng Ninh", R.drawable.travel_background, 4.8f, "1.200.000 VND"),
-        TravelPlace(2, "Phố cổ Hội An", "Quảng Nam", R.drawable.travel_background_nt, 4.7f, "800.000 VND"),
-        TravelPlace(3, "Khu du lịch Tam Cốc-Bích Động", "Ninh Bình", R.drawable.ninhbinh_background, 4.6f, "1.500.000 VND"),
-        TravelPlace(4, "Đà Lạt", "Lâm Đồng", R.drawable.ninhbinh_background, 4.6f, "1.500.000 VND")
+        TravelPlace(1, "Vịnh Hạ Long", "Quảng Ninh", R.drawable.travel_background, 4.8f, "1.200.000 VND",LatLng(20.9101, 107.1839)),
+        TravelPlace(2, "Phố cổ Hội An", "Quảng Nam", R.drawable.travel_background_nt, 4.7f, "800.000 VND",LatLng(15.8801, 108.3380)),
+        TravelPlace(3, "Khu du lịch Tam Cốc-Bích Động", "Ninh Bình", R.drawable.ninhbinh_background, 4.6f, "1.500.000 VND",LatLng(20.2120, 105.9222)),
+        TravelPlace(4, "Đà Lạt", "Lâm Đồng", R.drawable.ninhbinh_background, 4.6f, "1.500.000 VND",LatLng(11.9404, 108.4583))
     )
 
     LazyRow(
@@ -210,121 +211,7 @@ fun SpecialDeals() {
     }
 }
 
-@Composable
-fun PlaceCard(place: TravelPlace) {
-    val messageBox = rememberMessageBoxState()
-
-    Card(
-        modifier = Modifier
-            .width(200.dp)
-            .padding(end = 16.dp)
-            .clickable(
-                onClick = {
-                    // Xử lý khi nhấn avatar
-                    messageBox.show("Xin lỗi", "chức năng này chưa được cài đặt")
-                }
-            ),
-        shape = RoundedCornerShape(16.dp)
-    ) {
-        Column {
-            Image(
-                painter = painterResource(id = place.image),
-                contentDescription = place.name,
-                contentScale = ContentScale.Crop,
-                modifier = Modifier
-                    .height(120.dp)
-                    .fillMaxWidth()
-            )
-            Column(modifier = Modifier.padding(8.dp)) {
-                Text(
-                    text = place.name,
-                    fontWeight = FontWeight.Bold,
-                    maxLines = 1, // Giới hạn chỉ 1 dòng
-                    modifier = Modifier.fillMaxWidth(), // Giới hạn chiều rộng tối đa
-                    overflow = TextOverflow.Ellipsis // Thêm "..." nếu vượt quá
-                )
-                Text(
-                    text = place.location,
-                    fontSize = 12.sp,
-                    color = Color.Gray,
-                    maxLines = 1, // Giới hạn chỉ 1 dòng
-                    modifier = Modifier.fillMaxWidth(), // Giới hạn chiều rộng tối đa
-                    overflow = TextOverflow.Ellipsis // Thêm "..." nếu vượt quá
-                )
-                Row(
-                    verticalAlignment = Alignment.CenterVertically,
-                    modifier = Modifier.padding(top = 4.dp)
-                ) {
-                    Icon(
-                        painter = painterResource(id = R.drawable.ic_back_blue),
-                        contentDescription = "Rating",
-                        tint = Color(0xFFFFC107),
-                        modifier = Modifier.size(16.dp)
-                    )
-                    Text(
-                        text = place.rating.toString(),
-                        fontSize = 12.sp,
-                        modifier = Modifier.padding(start = 4.dp)
-                    )
-                }
-                Text(
-                    text = place.price,
-                    fontWeight = FontWeight.Bold,
-                    color = Color(0xFF2196F3),
-                    modifier = Modifier.padding(top = 4.dp)
-                )
-            }
-        }
-    }
-}
-
-@Composable
-fun DealCard(deal: TravelDeal) {
-    val messageBox = rememberMessageBoxState()
-    Box(
-        modifier = Modifier
-            .width(280.dp)
-            .clip(RoundedCornerShape(16.dp))
-            .clickable(
-                onClick = {
-                    // Xử lý khi nhấn avatar
-                    messageBox.show("Xin lỗi", "chức năng này chưa được cài đặt")
-                }
-            )
-    ) {
-        Image(
-            painter = painterResource(id = deal.image),
-            contentDescription = deal.title,
-            contentScale = ContentScale.Crop,
-            modifier = Modifier.fillMaxWidth()
-        )
-        Column(
-            modifier = Modifier
-                .align(Alignment.BottomStart)
-                .padding(16.dp)
-        ) {
-            Text(
-                text = deal.discount,
-                color = Color.White,
-                fontWeight = FontWeight.Bold,
-                fontSize = 18.sp,
-                maxLines = 1, // Giới hạn chỉ 1 dòng
-                modifier = Modifier.fillMaxWidth(), // Giới hạn chiều rộng tối đa
-                overflow = TextOverflow.Ellipsis // Thêm "..." nếu vượt quá
-            )
-            Text(
-                text = deal.title,
-                color = Color.White,
-                fontWeight = FontWeight.Bold,
-                maxLines = 1, // Giới hạn chỉ 1 dòng
-                modifier = Modifier.fillMaxWidth(), // Giới hạn chiều rộng tối đa
-                overflow = TextOverflow.Ellipsis // Thêm "..." nếu vượt quá
-            )
-        }
-    }
-}
-
-@Preview(showBackground = true)
+@Preview(showBackground = true,showSystemUi = true)
 @Composable
 fun PreviewMainScreen() {
     MainScreen(navController = rememberNavController())
