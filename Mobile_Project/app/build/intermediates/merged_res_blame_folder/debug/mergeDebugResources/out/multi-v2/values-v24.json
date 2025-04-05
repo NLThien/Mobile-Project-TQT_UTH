@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.travel_application.app-mergeDebugResources-82:/values-v24/values-v24.xml",
+            "outputFile": "com.example.travel_application.app-mergeDebugResources-84:/values-v24/values-v24.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\ROG\\.gradle\\caches\\8.11.1\\transforms\\c65ac010e0b67ea9c64e73f1d6f15fa0\\transformed\\media-1.0.0\\res\\values-v24\\values-v24.xml",
+                    "source": "C:\\Users\\ROG\\.gradle\\caches\\8.11.1\\transforms\\99e83414c3a5336fedb9a951043a9e46\\transformed\\media-1.0.0\\res\\values-v24\\values-v24.xml",
                     "from": {
                         "startLines": "2,3,4,5",
                         "startColumns": "4,4,4,4",
@@ -21,7 +21,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\ROG\\.gradle\\caches\\8.11.1\\transforms\\52c7762975d122fc2c010e1be24a1176\\transformed\\appcompat-1.6.1\\res\\values-v24\\values-v24.xml",
+                    "source": "C:\\Users\\ROG\\.gradle\\caches\\8.11.1\\transforms\\2c26faf0a3bbd79bd09e5a0cd7439e2c\\transformed\\appcompat-1.6.1\\res\\values-v24\\values-v24.xml",
                     "from": {
                         "startLines": "2,3",
                         "startColumns": "4,4",

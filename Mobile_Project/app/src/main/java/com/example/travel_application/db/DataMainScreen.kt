@@ -1,6 +1,6 @@
 package com.example.travel_application.db
 
-import com.example.travel_application.R
+import com.google.android.gms.maps.model.LatLng
 
 data class TravelPlace(
     val id: Int,
@@ -8,7 +8,8 @@ data class TravelPlace(
     val location: String,
     val image: Int,
     val rating: Float,
-    val price: String
+    val price: String,
+    val coordinates: LatLng // tọa độ bản đồ
 )
 
 data class TravelCategory(

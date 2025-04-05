@@ -85,10 +85,9 @@ fun AppBottomNavigation(navController: NavHostController) {
             tonalElevation = 8.dp,
             modifier = Modifier
                 .fillMaxWidth(0.9f)         // rộng 90%
-                .height(100.dp)
-                .padding(horizontal = 16.dp)
-                .padding(bottom = 20.dp)
-                .wrapContentSize(Alignment.BottomCenter)
+                .height(60.dp)
+//                .padding(horizontal = 16.dp)
+//                .padding(bottom = 20.dp)
                 .clip(RoundedCornerShape(40.dp)),  // bo góc cho thanh
         ) {
             navItems.forEach { item ->
@@ -97,12 +96,16 @@ fun AppBottomNavigation(navController: NavHostController) {
                         Icon(
                             imageVector = item.icon,
                             contentDescription = item.label,
+                            modifier = Modifier
+                                .fillMaxHeight(),
+//                                .padding(horizontal = 40.dp),
                             tint = if (currentRoute == item.route) Color.White else Color.Black
                         )
                     },
                     label = {
                         Text(
                             text = item.label,
+                            modifier = Modifier,
                             color = if (currentRoute == item.route) Color.White else Color.Black
                         )
                     },
@@ -120,7 +123,7 @@ fun AppBottomNavigation(navController: NavHostController) {
                         selectedTextColor = Color.White,
                         unselectedTextColor = Color.Black,
                         indicatorColor = Color(0xFF388E3C)
-                    )
+                    ),
                 )
             }
         }

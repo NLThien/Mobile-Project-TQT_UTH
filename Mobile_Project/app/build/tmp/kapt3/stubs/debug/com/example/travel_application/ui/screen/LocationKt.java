@@ -8,7 +8,7 @@ public final class LocationKt {
     androidx.navigation.NavController navController) {
     }
     
-    @androidx.compose.ui.tooling.preview.Preview(showBackground = true)
+    @androidx.compose.ui.tooling.preview.Preview(showBackground = true, showSystemUi = true)
     @androidx.compose.runtime.Composable()
     public static final void PreviewLocationScreen() {
     }
