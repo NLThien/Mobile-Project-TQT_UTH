@@ -190,8 +190,7 @@ fun LoginScreen(navController: NavController, onLoginSuccess : () -> Unit) {
                 }
 
                 TextButton(onClick = {
-//                    navController.navigate("register")
-                    messageBox.show("Thông báo", "Chức năng này chưa được cài đặt")
+                    navController.navigate("resigter")
                 }) {
                     Text(
                         "Đăng ký tài khoản",
