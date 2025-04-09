@@ -31,6 +31,7 @@ import com.example.travel_application.ui.navigation.AppBottomNavigation
 import com.example.travel_application.ui.screen.NotificationDetailScreen
 import androidx.navigation.navArgument
 import androidx.navigation.NavType
+import com.example.travel_application.ui.screen.RegisterScreen
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -57,6 +58,18 @@ fun TravelApp() {
             LoginScreen(
                 navController = navController,
                 onLoginSuccess = {
+                    isLoggedIn.value = true
+                    navController.navigate("main") {
+                        popUpTo("login") { inclusive = true }
+                    }
+                }
+            )
+        }
+
+        composable("resigter") {
+            RegisterScreen(
+                navController = navController,
+                onRegisterSuccess = {
                     isLoggedIn.value = true
                     navController.navigate("main") {
                         popUpTo("login") { inclusive = true }
