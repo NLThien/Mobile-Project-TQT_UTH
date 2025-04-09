@@ -1,20 +1,11 @@
 package com.example.travel_application
 
-import android.app.Notification
-import android.content.Context
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.annotation.Nullable
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
-import androidx.compose.foundation.layout.Column
-import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
@@ -28,6 +19,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.navigation.compose.composable
 import androidx.compose.foundation.layout.Box
+import androidx.navigation.NavHostController
 
 import com.example.travel_application.ui.screen.LoginScreen
 import com.example.travel_application.ui.screen.LocationScreen
@@ -36,6 +28,9 @@ import com.example.travel_application.ui.screen.NotificationsScreen
 import com.google.firebase.auth.FirebaseAuth
 import com.example.travel_application.ui.navigation.AppNavigation
 import com.example.travel_application.ui.navigation.AppBottomNavigation
+import com.example.travel_application.ui.screen.NotificationDetailScreen
+import androidx.navigation.navArgument
+import androidx.navigation.NavType
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -71,35 +66,29 @@ fun TravelApp() {
         }
 
         composable("main") {
-            Scaffold(
-                bottomBar = { AppBottomNavigation(navController) }
-            ) { innerPadding ->
-                Box(modifier = Modifier.padding(innerPadding)) {
-                    MainScreen(navController)
-                }
-            }
+            MainScreenWithBottomBar(navController)
         }
 
         composable("location") {
-            Scaffold(
-                bottomBar = { AppBottomNavigation(navController) }
-            ) { innerPadding ->
-                Box(modifier = Modifier.padding(innerPadding)) {
-                    LocationScreen(navController)
-                }
-            }
+            LocationScreenWithBottomBar(navController)
         }
+
 
         composable("notifications") {
-            Scaffold(
-                bottomBar = { AppBottomNavigation(navController) }
-            ) { innerPadding ->
-                Box(modifier = Modifier.padding(innerPadding)) {
-                    NotificationsScreen(navController)
-                }
-            }
+            NotificationsScreenWithBottomBar(navController)
         }
 
+        composable(
+            route = "notificationDetail/{notificationId}",
+            arguments = listOf(
+                navArgument("notificationId") { type = NavType.IntType }
+            )
+        ) { backStackEntry ->
+            NotificationDetailScreen(
+                navController = navController,
+                notificationId = backStackEntry.arguments?.getInt("notificationId")
+            )
+        }
     }
 }
 
@@ -110,6 +99,39 @@ fun StackPages(navController: NavController){
         "Login" -> LoginScreen(
             navController, onLoginSuccess = { currentScreen = "Main" }
         )
+    }
+}
+
+@Composable
+fun MainScreenWithBottomBar(navController: NavHostController) {
+    Scaffold(
+        bottomBar = { AppBottomNavigation(navController) }
+    ) { innerPadding ->
+        Box(modifier = Modifier.padding(innerPadding)) {
+            MainScreen(navController)
+        }
+    }
+}
+
+@Composable
+fun LocationScreenWithBottomBar(navController: NavHostController) {
+    Scaffold(
+        bottomBar = { AppBottomNavigation(navController) }
+    ) { innerPadding ->
+        Box(modifier = Modifier.padding(innerPadding)) {
+            LocationScreen(navController)
+        }
+    }
+}
+
+@Composable
+fun NotificationsScreenWithBottomBar(navController: NavHostController) {
+    Scaffold(
+        bottomBar = { AppBottomNavigation(navController) }
+    ) { innerPadding ->
+        Box(modifier = Modifier.padding(innerPadding)) {
+            NotificationsScreen(navController)
+        }
     }
 }
 
