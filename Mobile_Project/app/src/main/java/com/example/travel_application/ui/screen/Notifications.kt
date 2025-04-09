@@ -23,6 +23,7 @@ import com.example.travel_application.db.NotificationType
 import java.text.SimpleDateFormat
 import java.util.*
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 
 @Composable
 fun NotificationsScreen(navController: NavController) {
@@ -94,7 +95,13 @@ fun NotificationsScreen(navController: NavController) {
                 .padding(horizontal = 16.dp)
         ) {
             items(notifications) { notification ->
-                NotificationItem(notification = notification)
+                NotificationItem(
+                    notification = notification,
+                    onNotificationClick = { notificationId ->
+                        navController.navigate("notificationDetail/$notificationId")
+                }
+                )
+//                NotificationItem(notification = notification)
                 Spacer(modifier = Modifier.height(8.dp))
             }
         }
@@ -102,7 +109,10 @@ fun NotificationsScreen(navController: NavController) {
 }
 
 @Composable
-fun NotificationItem(notification: Notification) {
+fun NotificationItem(
+    notification: Notification,
+    onNotificationClick: (Int) -> Unit = {}
+) {
     val backgroundColor = when(notification.type) {
         NotificationType.TOUR_REMINDER -> Color(0xFFE3F2FD)
         NotificationType.PAYMENT_SUCCESS -> Color(0xFFE8F5E9)
@@ -120,7 +130,8 @@ fun NotificationItem(notification: Notification) {
     Card(
         modifier = Modifier
             .fillMaxWidth()
-            .border(1.dp, borderColor, RoundedCornerShape(8.dp)),
+            .border(1.dp, borderColor, RoundedCornerShape(8.dp))
+            .clickable { onNotificationClick(notification.id) },
         shape = RoundedCornerShape(8.dp),
         colors = CardDefaults.cardColors(containerColor = backgroundColor)
     ) {
