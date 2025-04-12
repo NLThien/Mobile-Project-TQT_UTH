@@ -1,18 +1,17 @@
 package com.example.travel_application.accessibility
 
+import android.content.Context
+import android.util.Log
+import androidx.activity.result.ActivityResult
 import androidx.lifecycle.ViewModel
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.GoogleAuthProvider
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
-import com.google.android.gms.auth.api.signin.GoogleSignIn
-import com.example.travel_application.R
-import android.util.Log
-import android.content.Context
-import androidx.activity.result.ActivityResult
 import com.google.android.gms.common.api.ApiException
-import com.google.android.gms.auth.api.signin.GoogleSignInAccount
-import kotlin.jvm.java
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.GoogleAuthProvider
+import com.example.travel_application.R
 
 class AuthViewModel : ViewModel() {
     private lateinit var auth: FirebaseAuth
@@ -51,7 +50,9 @@ class AuthViewModel : ViewModel() {
 
     fun signOut() {
         auth.signOut()
-        googleSignInClient.signOut()
+        googleSignInClient.signOut().addOnCompleteListener {
+            Log.d("AuthViewModel", "Google sign out completed")
+        }
     }
 
     fun getCurrentUser() = auth.currentUser

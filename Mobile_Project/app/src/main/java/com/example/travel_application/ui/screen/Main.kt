@@ -29,6 +29,9 @@ import androidx.compose.foundation.lazy.items
 import com.example.travel_application.accessibility.rememberMessageBoxState
 import androidx.compose.ui.text.style.TextOverflow
 import com.google.android.gms.maps.model.LatLng
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.setValue
 
 import com.example.travel_application.db.TravelDeal
 import com.example.travel_application.db.TravelPlace
@@ -38,6 +41,10 @@ import com.example.travel_application.ui.navigation.SearchBar
 
 @Composable
 fun MainScreen(navController: NavController) {
+
+    var showAppInfoDialog by remember { mutableStateOf(false) }
+    var showUserInfoDialog by remember { mutableStateOf(false) }
+
     val messageBox = rememberMessageBoxState()
     Column(
         modifier = Modifier
@@ -59,7 +66,8 @@ fun MainScreen(navController: NavController) {
                     .clickable(
                         onClick = {
                             // Xử lý khi nhấn avatar
-                            messageBox.show("Xin lỗi", "chức năng này chưa được cài đặt")
+                            showUserInfoDialog = true
+//                            messageBox.show("Xin lỗi", "chức năng này chưa được cài đặt")
                         }
                     )
             )
@@ -78,7 +86,8 @@ fun MainScreen(navController: NavController) {
                     .clickable(
                         onClick = {
                             // Xử lý khi nhấn avatar
-                            messageBox.show("Xin lỗi", "chức năng này chưa được cài đặt")
+                            showAppInfoDialog = true
+//                            messageBox.show("Xin lỗi", "chức năng này chưa được cài đặt")
                         }
                     )
             )
@@ -114,10 +123,10 @@ fun MainScreen(navController: NavController) {
 @Composable
 fun PopularPlaces() {
     val places = listOf(
-        TravelPlace(1, "Vịnh Hạ Long", "Quảng Ninh", R.drawable.travel_background, 4.8f, "1.200.000 VND",LatLng(20.9101, 107.1839)),
-        TravelPlace(2, "Phố cổ Hội An", "Quảng Nam", R.drawable.travel_background_nt, 4.7f, "800.000 VND",LatLng(15.8801, 108.3380)),
-        TravelPlace(3, "Khu du lịch Tam Cốc-Bích Động", "Ninh Bình", R.drawable.ninhbinh_background, 4.6f, "1.500.000 VND",LatLng(20.2120, 105.9222)),
-        TravelPlace(4, "Đà Lạt", "Lâm Đồng", R.drawable.ninhbinh_background, 4.6f, "1.500.000 VND",LatLng(11.9404, 108.4583))
+        TravelPlace("1", "Vịnh Hạ Long", "Quảng Ninh", R.drawable.travel_background, 4.8f, "1.200.000 VND",LatLng(20.9101, 107.1839)),
+        TravelPlace("2", "Phố cổ Hội An", "Quảng Nam", R.drawable.travel_background_nt, 4.7f, "800.000 VND",LatLng(15.8801, 108.3380)),
+        TravelPlace("3", "Khu du lịch Tam Cốc-Bích Động", "Ninh Bình", R.drawable.ninhbinh_background, 4.6f, "1.500.000 VND",LatLng(20.2120, 105.9222)),
+        TravelPlace("4", "Đà Lạt", "Lâm Đồng", R.drawable.ninhbinh_background, 4.6f, "1.500.000 VND",LatLng(11.9404, 108.4583))
     )
 
     LazyRow(
