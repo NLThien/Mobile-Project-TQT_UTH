@@ -31,63 +31,51 @@ import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.ui.modifier.modifierLocalConsumer
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Map
+import androidx.compose.material.icons.filled.Notifications
 import com.google.android.gms.maps.CameraUpdateFactory
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.draw.clip
-
+import androidx.navigation.compose.rememberNavController
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
+import androidx.compose.foundation.lazy.grid.items
 import com.example.travel_application.db.TravelPlace
 import kotlinx.coroutines.coroutineScope
 import java.nio.file.WatchEvent
 import kotlin.coroutines.coroutineContext
 import kotlinx.coroutines.launch
+import com.google.android.gms.maps.model.LatLngBounds
 import com.example.travel_application.accessibility.rememberMessageBoxState
+import com.example.travel_application.ui.navigation.SearchBar
+import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.travel_application.accessibility.ServiceLocator
+import com.example.travel_application.accessibility.TravelRepository
+import com.example.travel_application.viewmodel.TravelPlaceViewModel
 
 @Composable
-fun LocationScreen(navController: NavController) {
+fun LocationScreen(
+    navController: NavController
+) {
     val context = LocalContext.current
-    val mesageBox = rememberMessageBoxState()
-    val travelPlaces = remember {
-        listOf(
-            TravelPlace(
-                1,
-                "Vịnh Hạ Long",
-                "Quảng Ninh",
-                R.drawable.travel_background,
-                4.8f,
-                "1.200.000 VND",
-                LatLng(20.9101, 107.1839)
-            ),
-            TravelPlace(
-                2,
-                "Phố cổ Hội An",
-                "Quảng Nam",
-                R.drawable.travel_background,
-                4.7f,
-                "800.000 VND",
-                LatLng(15.8801, 108.3380)
-            ),
-            TravelPlace(
-                3,
-                "Tam Cốc-Bích Động",
-                "Ninh Bình",
-                R.drawable.travel_background,
-                4.6f,
-                "1.500.000 VND",
-                LatLng(20.2120, 105.9222)
-            ),
-            TravelPlace(
-                4,
-                "Đà Lạt",
-                "Lâm Đồng",
-                R.drawable.travel_background,
-                4.6f,
-                "1.500.000 VND",
-                LatLng(11.9404, 108.4583)
-            )
-        )
-    }
+    val messageBox = rememberMessageBoxState()
+    val travelPlaces = remember { mutableStateListOf<TravelPlace?>() }
 
     var selectedPlace by remember { mutableStateOf<TravelPlace?>(null) }
+
+    // Thêm state để theo dõi place đang được chọn từ map
+    var mapSelectedPlace by remember { mutableStateOf<TravelPlace?>(null) }
+
+    // Biến trạng thái để điều khiển hiển thị bản đồ
+    var isMapDisplayed by remember { mutableStateOf(false) }
+
+    // Biến trạng thái để lưu trữ truy vấn tìm kiếm
+    var searchQuery by remember { mutableStateOf("") }
+
+    // Thêm biến để theo dõi các marker
+    val markerStates = remember { mutableStateMapOf<String, MarkerState>() }
 
     // logic kiểm tra quyền truy cập Internet từ người dùng
     var hasLocationPermission by remember {
@@ -124,94 +112,45 @@ fun LocationScreen(navController: NavController) {
         }
     }
 
+    Spacer(modifier = Modifier.height(24.dp))
+
     Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .background(Color.White) // Thêm nền trắng cho đẹp
+        modifier = Modifier.fillMaxSize()
     ) {
-        // Header với khoảng cách hợp lý
-        Spacer(modifier = Modifier.height(40.dp))
-
-        Text(
-            text = "Chọn điểm du lịch",
-            fontSize = 24.sp,
-            fontWeight = FontWeight.Bold,
+        Row(
             modifier = Modifier
-                .padding(horizontal = 24.dp)
-                .fillMaxWidth(),
-            color = Color(0xFF1A237E) // Màu chữ đẹp hơn
-        )
-
-        Spacer(modifier = Modifier.height(16.dp))
-
-        // Google Maps với shadow và bo góc
-        Box(
-            modifier = Modifier
-                .height(280.dp) // Tăng chiều cao chút
                 .fillMaxWidth()
-                .padding(horizontal = 16.dp)
-                .shadow(
-                    elevation = 8.dp,
-                    shape = RoundedCornerShape(16.dp)
-                )
-                .clip(RoundedCornerShape(16.dp)) // Bo góc map
+                .padding(16.dp),
+            verticalAlignment = Alignment.CenterVertically
         ) {
-            val coroutineScope = rememberCoroutineScope() // Thêm scope cho animate
-            val mapProperties by remember {
-                derivedStateOf {
-                    MapProperties(
-                        isMyLocationEnabled = hasLocationPermission,
-                        mapType = MapType.NORMAL
-                    )
-                }
-            }
+            Icon(
+                imageVector = Icons.Default.Map,
+                contentDescription = "Locations",
+                tint = MaterialTheme.colorScheme.primary,
+                modifier = Modifier.size(28.dp)
+            )
 
-            GoogleMap(
-                modifier = Modifier.fillMaxSize(),
-                cameraPositionState = cameraPositionState,
-                properties = mapProperties,
-                uiSettings = MapUiSettings(
-                    zoomControlsEnabled = false,
-                    myLocationButtonEnabled = hasLocationPermission
-                )
-            ) {
-                travelPlaces.forEach { place ->
-                    Marker(
-                        state = remember { MarkerState(position = place.coordinates) },
-                        title = place.name,
-                        snippet = place.price,
-                        onClick = {
-                            if (selectedPlace?.id != place.id) {
-                                selectedPlace = place
-                                cameraPositionState.move(CameraUpdateFactory.newLatLngZoom(place.coordinates, 12f))
-                            }
-//                            selectedPlace = place
-                            coroutineScope.launch {
-                                cameraPositionState.animate(
-                                    CameraUpdateFactory.newLatLngZoom(
-                                        place.coordinates,
-                                        12f
-                                    ),
-                                    500
-                                )
-                            }
-                            cameraPositionState.position = CameraPosition.fromLatLngZoom(place.coordinates, 12f)
-                            true
-                            true
-                        }
-                    )
-                }
-            }
+            Spacer(modifier = Modifier.width(8.dp))
+
+            Text(
+                text = "Tìm kiếm Tour",
+                fontSize = 24.sp,
+                fontWeight = FontWeight.Bold,
+                color = MaterialTheme.colorScheme.primary
+            )
         }
 
-        Spacer(modifier = Modifier.height(24.dp))
+        // Thanh tìm kiếm
+        SearchBar(
+            textBar = "Tìm kiếm địa điểm du lịch"
+        )
 
-        // Danh sách địa điểm dạng LazyRow
-        Column(
-            modifier = Modifier.fillMaxWidth()
-        ) {
+        Spacer(modifier = Modifier.height(8.dp))
+
+        // Places list
+        Column(modifier = Modifier.fillMaxWidth()) {
             Text(
-                text = "Địa điểm nổi bật",
+                text = "Danh sách địa điểm",
                 fontSize = 18.sp,
                 fontWeight = FontWeight.SemiBold,
                 modifier = Modifier.padding(horizontal = 24.dp),
@@ -227,47 +166,217 @@ fun LocationScreen(navController: NavController) {
                 horizontalArrangement = Arrangement.spacedBy(12.dp),
                 contentPadding = PaddingValues(end = 16.dp)
             ) {
-                items(travelPlaces) { place ->
+                items(travelPlaces.filterNotNull()) { place ->
                     PlaceCard(
-                        place = place
+                        place = place,
+                        isSelected = place.id == selectedPlace?.id,
+                        onItemClick = { selectedPlace = place }
                     )
+                }
+            }
+            // Các danh mục gợi ý
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = 16.dp),
+                horizontalArrangement = Arrangement.spacedBy(8.dp)
+            ) {
+                // Button/Text cho Khu vực
+                CategoryChip(
+                    text = "Khu vực",
+                    isSelected = !isMapDisplayed, // Mặc định chọn Khu vực khi bản đồ không hiển thị
+                    onClick = { isMapDisplayed = false } // Khi chọn Khu vực, ẩn bản đồ
+                )
+                // Button/Text cho Tìm trên map
+                CategoryChip(
+                    text = "Tìm trên map",
+                    isSelected = isMapDisplayed,
+                    onClick = { isMapDisplayed = true } // Khi chọn Tìm trên map, hiển thị bản đồ
+                )
+            }
+        }
+
+        Spacer(modifier = Modifier.width(8.dp))
+
+        // Hiển thị Bản đồ HOẶC Danh sách địa điểm dựa vào isMapDisplayed
+        if (isMapDisplayed) {
+            // Bản đồ Google Maps
+            GoogleMap(
+                modifier = Modifier
+                    .fillMaxWidth(),
+                cameraPositionState = cameraPositionState,
+                uiSettings = MapUiSettings(
+                        zoomControlsEnabled = false,
+                        myLocationButtonEnabled = hasLocationPermission
+                )
+            ) {
+                // Thêm Marker cho mỗi địa điểm TỪ DANH SÁCH HIỂN THỊ
+                // Hiển thị tất cả marker
+                travelPlaces.filterNotNull().forEach { place ->
+                    val markerState = markerStates.getOrPut(place.id) {
+                        rememberMarkerState(position = place.coordinates)
+                    }
+                        Marker(
+                            state = markerState,
+//                            state = rememberMarkerState(position = place.coordinates),
+                            title = place.name,
+                            snippet = place.location,
+                            onClick = {
+                                mapSelectedPlace = place
+                                selectedPlace = null // Chọn địa điểm khi nhấn vào marker
+                                true // Trả về false để không tiêu thụ sự kiện click
+                            }
+                        )
+                    }
+                // Tự động zoom để hiển thị tất cả marker khi có dữ liệu
+                if (travelPlaces.isNotEmpty() && !cameraPositionState.isMoving) {
+                    LaunchedEffect(travelPlaces) {
+                        val bounds = LatLngBounds.Builder()
+                        travelPlaces.filterNotNull().forEach {
+                            bounds.include(it.coordinates)
+                        }
+                        try {
+                            cameraPositionState.animate(
+                                CameraUpdateFactory.newLatLngBounds(bounds.build(), 100),
+                                1000
+                            )
+                        } catch (e: Exception) {
+                            // Fallback nếu không đủ zoom
+                            cameraPositionState.animate(
+                                CameraUpdateFactory.newLatLngZoom(
+                                    travelPlaces.first()?.coordinates ?: LatLng(16.0, 108.0),
+                                    10f
+                                ),
+                                500
+                            )
+                        }
+                    }
                 }
             }
         }
 
-        Spacer(modifier = Modifier.weight(1f)) // Đẩy nút xuống dưới
+        // Places list (LazyRow) - Hiển thị khi bản đồ không hiển thị
+        Column(modifier = Modifier.fillMaxWidth()) {
 
-        // Nút xác nhận được thiết kế đẹp hơn
+            Spacer(modifier = Modifier.height(8.dp))
+
+            AllPlaces(
+                navController = navController,
+                selectedPlace = selectedPlace ?: mapSelectedPlace,
+                onPlaceSelected = { place ->
+                    selectedPlace = place
+                    mapSelectedPlace = null // Reset selection từ map
+                }
+            )
+        }
+
+        // Continue button
         Button(
             onClick = {
-//                selectedPlace?.let {
-//                    navController.navigate("booking/${it.id}")
-//                }
-                mesageBox.show("Xin lỗi", "chức năng này chưa được cài đặt")
+                selectedPlace?.let {
+                    // navController.navigate("booking/${it.id}")
+                    messageBox.show("Thông báo", "Chức năng đặt tour sẽ được cập nhật sớm")
+                }
             },
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(24.dp)
-                .height(52.dp), // Cao hơn chút
+                .height(52.dp),
             enabled = selectedPlace != null,
             colors = ButtonDefaults.buttonColors(
-                containerColor = Color(0xFFE0F7FA), // Màu nút
-                disabledContainerColor = Color.LightGray // Màu khi disabled
+                containerColor = Color(0xFFE0F7FA),
+                disabledContainerColor = Color.LightGray
             ),
-            shape = RoundedCornerShape(12.dp) // Bo góc đẹp
+            shape = RoundedCornerShape(12.dp)
         ) {
-            Text(
-                "Tiếp tục",
-                fontSize = 18.sp,
-                fontWeight = FontWeight.Medium
-            )
+            Text("Tiếp tục", fontSize = 18.sp, fontWeight = FontWeight.Medium)
         }
     }
 }
 
-@Preview(showBackground = true,showSystemUi = true)
+@Composable
+fun CategoryChip(
+    modifier: Modifier = Modifier,
+    text: String,
+    isSelected: Boolean,
+    onClick: () -> Unit
+) {
+    Surface(
+        shape = RoundedCornerShape(8.dp),
+        color = if (isSelected) MaterialTheme.colorScheme.primary else Color.LightGray,
+        contentColor = if (isSelected) Color.White else Color.Black,
+        modifier = Modifier
+            .clickable(onClick = onClick)
+            .padding(vertical = 4.dp) // Khoảng cách trên/dưới
+    ) {
+        Text(
+            text = text,
+            fontSize = 14.sp,
+            fontWeight = FontWeight.Medium,
+            modifier = Modifier.padding(horizontal = 12.dp, vertical = 6.dp)
+        )
+    }
+}
+
+@Composable
+fun AllPlaces(
+    navController: NavController,
+    selectedPlace: TravelPlace?,
+    onPlaceSelected: (TravelPlace) -> Unit
+) {
+    // Lấy repository từ ServiceLocator
+    val travelRepository = remember {
+        ServiceLocator.get(TravelRepository::class.java)
+    }
+    var places by remember { mutableStateOf<List<TravelPlace>>(emptyList()) }
+    var isLoading by remember { mutableStateOf(true) }
+    var error by remember { mutableStateOf<String?>(null) }
+
+    LaunchedEffect(Unit) {
+        try {
+            places = travelRepository.getTravelPlaces()
+        } catch (e: Exception) {
+            error = "Failed to load places: ${e.message}"
+        } finally {
+            isLoading = false
+        }
+    }
+
+    if (isLoading) {
+        // Hiển thị loading indicator
+        CircularProgressIndicator(modifier = Modifier.padding(16.dp))
+    } else if (error != null) {
+        // Hiển thị thông báo lỗi
+        Text(text = error!!, color = Color.Red)
+    } else if (places.isEmpty()) {
+        // Hiển thị khi không có dữ liệu
+        Text("No places available", modifier = Modifier.padding(16.dp))
+    } else {
+        // Hiển thị lưới PlaceCard
+        LazyVerticalGrid(
+            columns = GridCells.Fixed(2),
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 16.dp),
+            verticalArrangement = Arrangement.spacedBy(12.dp),
+            horizontalArrangement = Arrangement.spacedBy(12.dp)
+        ) {
+            items(places) { place ->
+                PlaceCard(
+                    place = place,
+                    isSelected = place.id == selectedPlace?.id,
+                    onItemClick = {
+                        onPlaceSelected(place)
+                        navController.navigate("place_detail/${place.id}")
+                    },
+                )
+            }
+        }
+    }
+}
+
+@Preview(showBackground = true)
 @Composable
 fun PreviewLocationScreen() {
-    val navController = NavController(LocalContext.current)
-    LocationScreen(navController = navController)
+    LocationScreen(navController = rememberNavController())
 }

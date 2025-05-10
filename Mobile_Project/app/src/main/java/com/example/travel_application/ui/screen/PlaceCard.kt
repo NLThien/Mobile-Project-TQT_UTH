@@ -25,69 +25,86 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.travel_application.R
+import androidx.compose.material.icons.Icons
 import com.example.travel_application.accessibility.rememberMessageBoxState
 import com.example.travel_application.db.TravelPlace
 import com.google.android.gms.maps.model.LatLng
+import coil.compose.AsyncImage
+import kotlin.String
+import androidx.compose.material.icons.filled.Star
+import androidx.compose.foundation.border
+import androidx.compose.material.icons.filled.StarBorder
+import androidx.compose.material.icons.outlined.StarOutline
 
 @Composable
-fun PlaceCard(place: TravelPlace) {
-    val messageBox = rememberMessageBoxState()
-
+fun PlaceCard(
+    place: TravelPlace,
+    isSelected: Boolean,
+    onItemClick: () -> Unit = {}
+) {
     Card(
         modifier = Modifier
             .width(200.dp)
-            .padding(end = 16.dp)
-            .clickable(
-                onClick = {
-                    // Xử lý khi nhấn avatar
-                    messageBox.show("Xin lỗi", "chức năng này chưa được cài đặt")
-                }
+            .clickable(onClick = onItemClick)
+            .border(
+                width = if (isSelected) 2.dp else 0.dp,
+                color = if (isSelected) Color.Blue else Color.Transparent,
+                shape = RoundedCornerShape(16.dp)
             ),
         shape = RoundedCornerShape(16.dp)
     ) {
         Column {
-            Image(
-                painter = painterResource(id = place.image),
+            AsyncImage(
+                model = place.imageURL,
                 contentDescription = place.name,
-                contentScale = ContentScale.Crop,
                 modifier = Modifier
                     .height(120.dp)
-                    .fillMaxWidth()
+                    .fillMaxWidth(),
+                contentScale = ContentScale.Crop,
+                placeholder = painterResource(R.drawable.app_logo),
+                error = painterResource(R.drawable.ic_avatar_home)
             )
+
             Column(modifier = Modifier.padding(8.dp)) {
                 Text(
                     text = place.name,
                     fontWeight = FontWeight.Bold,
-                    maxLines = 1, // Giới hạn chỉ 1 dòng
-                    modifier = Modifier.fillMaxWidth(), // Giới hạn chiều rộng tối đa
-                    overflow = TextOverflow.Ellipsis // Thêm "..." nếu vượt quá
+                    maxLines = 1,
+                    modifier = Modifier.fillMaxWidth(),
+                    overflow = TextOverflow.Ellipsis
                 )
                 Text(
                     text = place.location,
                     fontSize = 12.sp,
                     color = Color.Gray,
-                    maxLines = 1, // Giới hạn chỉ 1 dòng
-                    modifier = Modifier.fillMaxWidth(), // Giới hạn chiều rộng tối đa
-                    overflow = TextOverflow.Ellipsis // Thêm "..." nếu vượt quá
+                    maxLines = 1,
+                    modifier = Modifier.fillMaxWidth(),
+                    overflow = TextOverflow.Ellipsis
                 )
+
+                // Rating với Material Icons
                 Row(
                     verticalAlignment = Alignment.CenterVertically,
                     modifier = Modifier.padding(top = 4.dp)
                 ) {
-                    Icon(
-                        painter = painterResource(id = R.drawable.ic_back_blue),
-                        contentDescription = "Rating",
-                        tint = Color(0xFFFFC107),
-                        modifier = Modifier.size(16.dp)
-                    )
+                    repeat(5) { index ->
+                        Icon(
+                            imageVector = if (index < place.rating.toInt()) Icons.Filled.Star
+                            else Icons.Outlined.StarOutline,
+                            contentDescription = "Rating",
+                            tint = Color(0xFFFFC107),
+                            modifier = Modifier.size(16.dp)
+                        )
+                    }
                     Text(
-                        text = place.rating.toString(),
+                        text = " ${place.rating}",
                         fontSize = 12.sp,
                         modifier = Modifier.padding(start = 4.dp)
                     )
                 }
+
                 Text(
-                    text = place.price,
+                    text = "${place.price} VND",
                     fontWeight = FontWeight.Bold,
                     color = Color(0xFF2196F3),
                     modifier = Modifier.padding(top = 4.dp)
@@ -99,6 +116,21 @@ fun PlaceCard(place: TravelPlace) {
 
 @Preview(showBackground = true)
 @Composable
-fun PreviewPlaceCard(){
-    PlaceCard(place = TravelPlace(1, "Vịnh Hạ Long", "Quảng Ninh", R.drawable.travel_background, 4.8f, "1.200.000 VND",LatLng(20.9101, 107.1839)))
+fun PreviewPlaceCard() {
+    PlaceCard(
+        place = TravelPlace(
+            id = "1",
+            name = "Vịnh Hạ Long",
+            location = "Quảng Ninh",
+            imageURL = "",
+            rating = 4.8f,
+            price = 1200000,
+            coordinates = LatLng(0.0, 0.0),
+            placeId = "",
+            description = "",
+            facilities = emptyList()
+        ),
+        isSelected = false,
+        onItemClick = {}
+    )
 }

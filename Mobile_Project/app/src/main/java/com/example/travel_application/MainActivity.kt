@@ -20,7 +20,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.navigation.compose.composable
 import androidx.compose.foundation.layout.Box
 import androidx.navigation.NavHostController
-
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.travel_application.ui.screen.LoginScreen
 import com.example.travel_application.ui.screen.LocationScreen
 import com.example.travel_application.ui.screen.MainScreen
@@ -32,7 +32,14 @@ import com.example.travel_application.ui.screen.NotificationDetailScreen
 import androidx.navigation.navArgument
 import androidx.navigation.NavType
 import com.example.travel_application.ui.screen.RegisterScreen
+import com.example.travel_application.ui.screen.DetailPlacedInMapScreen
+import androidx.activity.compose.setContent
+import dagger.hilt.android.AndroidEntryPoint
+import com.example.travel_application.viewmodel.TravelPlaceViewModel
+import androidx.hilt.navigation.compose.hiltViewModel
+import com.example.travel_application.accessibility.AuthViewModel
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -49,12 +56,14 @@ class MainActivity : ComponentActivity() {
 fun TravelApp() {
     val navController = rememberNavController()
     val isLoggedIn = remember { mutableStateOf(false) }
+    val authViewModel: AuthViewModel = hiltViewModel()
 
     NavHost(
         navController = navController,
         startDestination = if (isLoggedIn.value) "main" else "login",
     ) {
         composable("login") {
+            val authViewModel: AuthViewModel = viewModel()
             LoginScreen(
                 navController = navController,
                 onLoginSuccess = {
@@ -62,11 +71,13 @@ fun TravelApp() {
                     navController.navigate("main") {
                         popUpTo("login") { inclusive = true }
                     }
-                }
+                },
+                authViewModel = authViewModel
             )
         }
 
         composable("resigter") {
+            val authViewModel: AuthViewModel = viewModel()
             RegisterScreen(
                 navController = navController,
                 onRegisterSuccess = {
@@ -102,15 +113,25 @@ fun TravelApp() {
                 notificationId = backStackEntry.arguments?.getInt("notificationId")
             )
         }
+
+        composable("place_detail/{placeId}",
+            arguments = listOf(navArgument("placeId") { type = NavType.StringType })
+        ) { backStackEntry ->
+            val placeId = backStackEntry.arguments?.getString("placeId") ?: ""
+            DetailPlacedInMapScreen(navController,placeId = placeId)
+        }
     }
 }
 
 @Composable
 fun StackPages(navController: NavController){
     var currentScreen by remember { mutableStateOf("Login") }
+    var authViewModel: AuthViewModel = viewModel()
     when(currentScreen){
         "Login" -> LoginScreen(
-            navController, onLoginSuccess = { currentScreen = "Main" }
+            navController,
+            onLoginSuccess = { currentScreen = "Main" },
+            authViewModel = authViewModel
         )
     }
 }
@@ -151,8 +172,9 @@ fun NotificationsScreenWithBottomBar(navController: NavHostController) {
 @Preview(showBackground = true)
 @Composable
 fun LoginScreenPreview() {
+    var authViewModel: AuthViewModel = viewModel()
     AppTheme {
-        LoginScreen(navController = rememberNavController(), onLoginSuccess = {true})
+        LoginScreen(navController = rememberNavController(), onLoginSuccess = {true}, authViewModel)
     }
 }
 

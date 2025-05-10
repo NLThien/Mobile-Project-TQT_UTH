@@ -26,6 +26,7 @@ import com.example.travel_application.ui.screen.NotificationsScreen
 import com.example.travel_application.ui.screen.LoginScreen
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.platform.LocalContext
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.travel_application.StackPages
 
 @Composable     // quản lý thanh bar chính

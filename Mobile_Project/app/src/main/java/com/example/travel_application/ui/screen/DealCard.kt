@@ -21,6 +21,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import coil.compose.AsyncImage
 import com.example.travel_application.R
 import com.example.travel_application.accessibility.rememberMessageBoxState
 import com.example.travel_application.db.TravelDeal
@@ -36,17 +37,17 @@ fun DealCard(deal: TravelDeal) {
             .clip(RoundedCornerShape(16.dp))
             .clickable(
                 onClick = {
-                    // Xử lý khi nhấn avatar
                     messageBox.show("Xin lỗi", "chức năng này chưa được cài đặt")
                 }
             )
     ) {
-        Image(
-            painter = painterResource(id = deal.image),
+        AsyncImage(
+            model = deal.imageURL,
             contentDescription = deal.title,
             contentScale = ContentScale.Crop,
             modifier = Modifier.fillMaxWidth()
         )
+
         Column(
             modifier = Modifier
                 .align(Alignment.BottomStart)
@@ -76,5 +77,5 @@ fun DealCard(deal: TravelDeal) {
 @Preview(showBackground = true)
 @Composable
 fun PreviewDealCard(){
-    DealCard(deal = TravelDeal(1, "Giảm 30% tour Đà Nẵng", "30% OFF", R.drawable.travel_background))
+    DealCard(deal = TravelDeal(1, "Giảm 30% tour Đà Nẵng", "30% OFF", "R.drawable.travel_background"))
 }

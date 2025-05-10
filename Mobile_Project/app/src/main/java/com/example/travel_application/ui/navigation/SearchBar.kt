@@ -22,14 +22,18 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.draw.clip
 
 @Composable
-fun SearchBar() {
+fun SearchBar(
+    textBar: String
+) {
     var searchText by remember { mutableStateOf("") }
 
     TextField(
         value = searchText,
-        onValueChange = { searchText = it },
+        onValueChange = {
+            searchText = it
+        },
         leadingIcon = { Icon(Icons.Default.Search, contentDescription = "Search") },
-        placeholder = { Text("Tìm kiếm điểm du lịch...") },
+        placeholder = { Text(textBar) },
         modifier = Modifier
             .fillMaxWidth()
             .padding(16.dp)
