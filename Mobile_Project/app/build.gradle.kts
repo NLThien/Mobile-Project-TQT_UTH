@@ -5,6 +5,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
+    alias(libs.plugins.hilt.android)
     kotlin("kapt")
     id("com.google.gms.google-services")
 }
@@ -68,9 +69,17 @@ dependencies {
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
     implementation("com.squareup.retrofit2:converter-gson:2.9.0")
 
+    // Hilt
+    implementation("com.google.dagger:hilt-android:2.51.1") // Use the latest version
+    kapt("com.google.dagger:hilt-compiler:2.48")
+    implementation("androidx.hilt:hilt-navigation-compose:1.1.0")
+
     // Room
     implementation("androidx.room:room-runtime:2.5.0")
     kapt("androidx.room:room-compiler:2.5.0")
+
+    // JSR-330 (javax.inject)
+    implementation("javax.inject:javax.inject:1")
 
     // Coroutines
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3")
@@ -81,6 +90,7 @@ dependencies {
     implementation("com.google.firebase:firebase-analytics")
     implementation("com.google.firebase:firebase-auth-ktx")
     implementation("com.google.firebase:firebase-firestore-ktx")
+    implementation("com.squareup.picasso:picasso:2.8") // Để load ảnh từ URL
 
     implementation("com.google.android.gms:play-services-auth:20.7.0") // Google Sign-In
 

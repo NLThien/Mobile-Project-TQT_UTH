@@ -1,5 +1,9 @@
 package com.example.travel_application.ui.screen
 
+import android.app.Activity
+import androidx.activity.result.ActivityResult
+import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -24,20 +28,66 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.compose.material.icons.filled.AccountCircle
 import androidx.navigation.NavController
+import androidx.compose.ui.platform.LocalContext
 import com.example.travel_application.R
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.rememberNavController
 import com.example.travel_application.ui.screen.MessageBox
+import com.example.travel_application.accessibility.AuthViewModel
 import com.example.travel_application.accessibility.rememberMessageBoxState
 
 @Composable
-fun LoginScreen(navController: NavController, onLoginSuccess : () -> Unit) {
+fun LoginScreen(
+    navController: NavController,
+    onLoginSuccess : () -> Unit,
+    authViewModel: AuthViewModel
+){
+    val context = LocalContext.current
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
     var passwordVisible by remember { mutableStateOf(false) }
 
     val messageBox = rememberMessageBoxState()
+
+    // Khởi tạo AuthViewModel khi Composable được tạo lần đầu
+    LaunchedEffect(Unit) {
+        authViewModel.initializeAuth(context)
+    }
+
+    // Launcher để xử lý kết quả từ Google Sign-In Intent
+    val googleSignInLauncher = rememberLauncherForActivityResult(
+        contract = ActivityResultContracts.StartActivityForResult(),
+        onResult = { result: ActivityResult ->
+            if (result.resultCode == Activity.RESULT_OK) {
+                authViewModel.handleSignInResult(result) {
+                    // Gọi onLoginSuccess khi đăng nhập Google thành công
+                    onLoginSuccess()
+                }
+            } else {
+                // Xử lý trường hợp người dùng hủy hoặc đăng nhập thất bại
+                messageBox.show("Đăng nhập", "Đăng nhập Google thất bại.")
+            }
+        }
+    )
+
+    // Xử lý đăng nhập bằng email/mật khẩu
+    fun loginUser() {
+        if (email.isEmpty() || password.isEmpty()) {
+            messageBox.show("Lỗi", "Vui lòng nhập email và mật khẩu")
+            return
+        }
+
+        authViewModel.loginWithEmail(
+            email = email,
+            password = password,
+            onSuccess = onLoginSuccess,
+            onError = { error ->
+                messageBox.show("Đăng nhập thất bại", error)
+            }
+        )
+    }
 
     Box(
         modifier = Modifier
@@ -158,8 +208,7 @@ fun LoginScreen(navController: NavController, onLoginSuccess : () -> Unit) {
             // Login Button
             Button(
                 onClick = {
-                    /* Xử lý đăng nhập */
-                    onLoginSuccess()
+                    loginUser()
                 },
                 modifier = Modifier
                     .fillMaxWidth()
@@ -199,6 +248,34 @@ fun LoginScreen(navController: NavController, onLoginSuccess : () -> Unit) {
                     )
                 }
             }
+            // Nút đăng nhập bằng Google
+            Button(
+                onClick = {
+                    val signInIntent = authViewModel.getGoogleSignInIntent()
+                    googleSignInLauncher.launch(signInIntent)
+                },
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(50.dp),
+                shape = RoundedCornerShape(12.dp),
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = Color(0xFF3290B2), // Màu Google Blue
+                    contentColor = Color.White
+                )
+            ) {
+                Row(
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.Center
+                ) {
+                    Icon(
+                        imageVector = Icons.Filled.AccountCircle, // Hoặc Icons.Rounded.Google
+                        contentDescription = "Google icon",
+                        modifier = Modifier.size(24.dp)
+                    )
+                    Spacer(modifier = Modifier.width(8.dp))
+                    Text("ĐĂNG NHẬP VỚI GOOGLE", fontWeight = FontWeight.Bold)
+                }
+            }
         }
     }
 }
@@ -206,6 +283,7 @@ fun LoginScreen(navController: NavController, onLoginSuccess : () -> Unit) {
 @Preview(showBackground = true)
 @Composable
 fun PreviewLoginScreen() {
+    val authViewModel = remember { AuthViewModel() }
     val navController = rememberNavController()
-    LoginScreen(navController = navController, onLoginSuccess = {})
+    LoginScreen(navController = navController, onLoginSuccess = {}, authViewModel = authViewModel)
 }

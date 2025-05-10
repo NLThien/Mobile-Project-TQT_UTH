@@ -32,7 +32,7 @@ fun NotificationsScreen(navController: NavController) {
         Notification(
             id = 1,
             title = "Nhắc nhở tour",
-            message = "Tour Hạ Long của bạn sẽ bắt đầu vào ngày mai. Vui lòng đến điểm tập trung trước 7:00",
+            message = "Tour Hạ Long của bạn sẽ bắt đầu vào ngày mai. Vui lòng đến điểm tập trung đúng giờ",
             type = NotificationType.TOUR_REMINDER,
             time = SimpleDateFormat("HH:mm dd/MM/yyyy", Locale.getDefault()).format(Date())
         ),

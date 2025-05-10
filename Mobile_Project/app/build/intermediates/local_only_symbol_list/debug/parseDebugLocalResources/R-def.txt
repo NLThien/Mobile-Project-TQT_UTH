@@ -27,13 +27,12 @@ drawable ic_launcher_foreground
 drawable ic_restaurant
 drawable ic_ticket
 drawable ic_tour
-drawable ninhbinh_background
 drawable travel_background
-drawable travel_background_nt
 mipmap ic_app
 mipmap ic_app_round
 mipmap ic_app_square
 string app_name
+string default_notification_channel_id
 string default_web_client_id
 string gcm_defaultSenderId
 string google_api_key

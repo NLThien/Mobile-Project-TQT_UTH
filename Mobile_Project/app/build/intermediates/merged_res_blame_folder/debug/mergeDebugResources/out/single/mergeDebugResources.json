@@ -1,138 +1,130 @@
 [
     {
-        "merged": "com.example.travel_application.app-debug-86:/xml_backup_rules.xml.flat",
-        "source": "com.example.travel_application.app-main-88:/xml/backup_rules.xml"
+        "merged": "com.example.travel_application.app-debug-78:/drawable_app_logo.png.flat",
+        "source": "com.example.travel_application.app-main-80:/drawable/app_logo.png"
     },
     {
-        "merged": "com.example.travel_application.app-debug-86:/mipmap-xxxhdpi_ic_app_round.webp.flat",
-        "source": "com.example.travel_application.app-main-88:/mipmap-xxxhdpi/ic_app_round.webp"
+        "merged": "com.example.travel_application.app-debug-78:/drawable_ic_back_blue.png.flat",
+        "source": "com.example.travel_application.app-main-80:/drawable/ic_back_blue.png"
     },
     {
-        "merged": "com.example.travel_application.app-debug-86:/mipmap-xxxhdpi_ic_app_square.webp.flat",
-        "source": "com.example.travel_application.app-main-88:/mipmap-xxxhdpi/ic_app_square.webp"
+        "merged": "com.example.travel_application.app-debug-78:/mipmap-xxhdpi_ic_app_round.webp.flat",
+        "source": "com.example.travel_application.app-main-80:/mipmap-xxhdpi/ic_app_round.webp"
     },
     {
-        "merged": "com.example.travel_application.app-debug-86:/drawable_ic_avatar_background.xml.flat",
-        "source": "com.example.travel_application.app-main-88:/drawable/ic_avatar_background.xml"
+        "merged": "com.example.travel_application.app-debug-78:/xml_data_extraction_rules.xml.flat",
+        "source": "com.example.travel_application.app-main-80:/xml/data_extraction_rules.xml"
     },
     {
-        "merged": "com.example.travel_application.app-debug-86:/mipmap-xxhdpi_ic_app_square.webp.flat",
-        "source": "com.example.travel_application.app-main-88:/mipmap-xxhdpi/ic_app_square.webp"
+        "merged": "com.example.travel_application.app-debug-78:/mipmap-anydpi-v26_ic_app_round.xml.flat",
+        "source": "com.example.travel_application.app-main-80:/mipmap-anydpi-v26/ic_app_round.xml"
     },
     {
-        "merged": "com.example.travel_application.app-debug-86:/drawable_ic_hotel.jpg.flat",
-        "source": "com.example.travel_application.app-main-88:/drawable/ic_hotel.jpg"
+        "merged": "com.example.travel_application.app-debug-78:/drawable_ic_launcher_foreground.xml.flat",
+        "source": "com.example.travel_application.app-main-80:/drawable/ic_launcher_foreground.xml"
     },
     {
-        "merged": "com.example.travel_application.app-debug-86:/drawable_ic_launcher_foreground.xml.flat",
-        "source": "com.example.travel_application.app-main-88:/drawable/ic_launcher_foreground.xml"
+        "merged": "com.example.travel_application.app-debug-78:/mipmap-xhdpi_ic_app_square.webp.flat",
+        "source": "com.example.travel_application.app-main-80:/mipmap-xhdpi/ic_app_square.webp"
     },
     {
-        "merged": "com.example.travel_application.app-debug-86:/mipmap-hdpi_ic_app.webp.flat",
-        "source": "com.example.travel_application.app-main-88:/mipmap-hdpi/ic_app.webp"
+        "merged": "com.example.travel_application.app-debug-78:/mipmap-mdpi_ic_app_square.webp.flat",
+        "source": "com.example.travel_application.app-main-80:/mipmap-mdpi/ic_app_square.webp"
     },
     {
-        "merged": "com.example.travel_application.app-debug-86:/drawable_ic_tour.jpg.flat",
-        "source": "com.example.travel_application.app-main-88:/drawable/ic_tour.jpg"
+        "merged": "com.example.travel_application.app-debug-78:/mipmap-mdpi_ic_app.webp.flat",
+        "source": "com.example.travel_application.app-main-80:/mipmap-mdpi/ic_app.webp"
     },
     {
-        "merged": "com.example.travel_application.app-debug-86:/mipmap-mdpi_ic_app_square.webp.flat",
-        "source": "com.example.travel_application.app-main-88:/mipmap-mdpi/ic_app_square.webp"
+        "merged": "com.example.travel_application.app-debug-78:/drawable_ic_hotel.jpg.flat",
+        "source": "com.example.travel_application.app-main-80:/drawable/ic_hotel.jpg"
     },
     {
-        "merged": "com.example.travel_application.app-debug-86:/mipmap-xhdpi_ic_app_round.webp.flat",
-        "source": "com.example.travel_application.app-main-88:/mipmap-xhdpi/ic_app_round.webp"
+        "merged": "com.example.travel_application.app-debug-78:/mipmap-xhdpi_ic_app.webp.flat",
+        "source": "com.example.travel_application.app-main-80:/mipmap-xhdpi/ic_app.webp"
     },
     {
-        "merged": "com.example.travel_application.app-debug-86:/drawable_ic_avatar.jpg.flat",
-        "source": "com.example.travel_application.app-main-88:/drawable/ic_avatar.jpg"
+        "merged": "com.example.travel_application.app-debug-78:/mipmap-hdpi_ic_app.webp.flat",
+        "source": "com.example.travel_application.app-main-80:/mipmap-hdpi/ic_app.webp"
     },
     {
-        "merged": "com.example.travel_application.app-debug-86:/mipmap-hdpi_ic_app_square.webp.flat",
-        "source": "com.example.travel_application.app-main-88:/mipmap-hdpi/ic_app_square.webp"
+        "merged": "com.example.travel_application.app-debug-78:/mipmap-xxxhdpi_ic_app_square.webp.flat",
+        "source": "com.example.travel_application.app-main-80:/mipmap-xxxhdpi/ic_app_square.webp"
     },
     {
-        "merged": "com.example.travel_application.app-debug-86:/mipmap-anydpi-v26_ic_app.xml.flat",
-        "source": "com.example.travel_application.app-main-88:/mipmap-anydpi-v26/ic_app.xml"
+        "merged": "com.example.travel_application.app-debug-78:/drawable_ic_avatar_background.xml.flat",
+        "source": "com.example.travel_application.app-main-80:/drawable/ic_avatar_background.xml"
     },
     {
-        "merged": "com.example.travel_application.app-debug-86:/xml_data_extraction_rules.xml.flat",
-        "source": "com.example.travel_application.app-main-88:/xml/data_extraction_rules.xml"
+        "merged": "com.example.travel_application.app-debug-78:/drawable_ic_launcher_background.xml.flat",
+        "source": "com.example.travel_application.app-main-80:/drawable/ic_launcher_background.xml"
     },
     {
-        "merged": "com.example.travel_application.app-debug-86:/mipmap-mdpi_ic_app.webp.flat",
-        "source": "com.example.travel_application.app-main-88:/mipmap-mdpi/ic_app.webp"
+        "merged": "com.example.travel_application.app-debug-78:/mipmap-xhdpi_ic_app_round.webp.flat",
+        "source": "com.example.travel_application.app-main-80:/mipmap-xhdpi/ic_app_round.webp"
     },
     {
-        "merged": "com.example.travel_application.app-debug-86:/mipmap-xxhdpi_ic_app.webp.flat",
-        "source": "com.example.travel_application.app-main-88:/mipmap-xxhdpi/ic_app.webp"
+        "merged": "com.example.travel_application.app-debug-78:/mipmap-xxxhdpi_ic_app_round.webp.flat",
+        "source": "com.example.travel_application.app-main-80:/mipmap-xxxhdpi/ic_app_round.webp"
     },
     {
-        "merged": "com.example.travel_application.app-debug-86:/mipmap-xhdpi_ic_app_square.webp.flat",
-        "source": "com.example.travel_application.app-main-88:/mipmap-xhdpi/ic_app_square.webp"
+        "merged": "com.example.travel_application.app-debug-78:/mipmap-mdpi_ic_app_round.webp.flat",
+        "source": "com.example.travel_application.app-main-80:/mipmap-mdpi/ic_app_round.webp"
     },
     {
-        "merged": "com.example.travel_application.app-debug-86:/mipmap-xxhdpi_ic_app_round.webp.flat",
-        "source": "com.example.travel_application.app-main-88:/mipmap-xxhdpi/ic_app_round.webp"
+        "merged": "com.example.travel_application.app-debug-78:/mipmap-xxxhdpi_ic_app.webp.flat",
+        "source": "com.example.travel_application.app-main-80:/mipmap-xxxhdpi/ic_app.webp"
     },
     {
-        "merged": "com.example.travel_application.app-debug-86:/drawable_backgrounnd_app_ic.xml.flat",
-        "source": "com.example.travel_application.app-main-88:/drawable/backgrounnd_app_ic.xml"
+        "merged": "com.example.travel_application.app-debug-78:/mipmap-xxhdpi_ic_app_square.webp.flat",
+        "source": "com.example.travel_application.app-main-80:/mipmap-xxhdpi/ic_app_square.webp"
     },
     {
-        "merged": "com.example.travel_application.app-debug-86:/drawable_travel_background_nt.png.flat",
-        "source": "com.example.travel_application.app-main-88:/drawable/travel_background_nt.png"
+        "merged": "com.example.travel_application.app-debug-78:/mipmap-hdpi_ic_app_square.webp.flat",
+        "source": "com.example.travel_application.app-main-80:/mipmap-hdpi/ic_app_square.webp"
     },
     {
-        "merged": "com.example.travel_application.app-debug-86:/drawable_ic_restaurant.png.flat",
-        "source": "com.example.travel_application.app-main-88:/drawable/ic_restaurant.png"
+        "merged": "com.example.travel_application.app-debug-78:/drawable_ic_avatar.jpg.flat",
+        "source": "com.example.travel_application.app-main-80:/drawable/ic_avatar.jpg"
     },
     {
-        "merged": "com.example.travel_application.app-debug-86:/drawable_ic_avatar_home.xml.flat",
-        "source": "com.example.travel_application.app-main-88:/drawable/ic_avatar_home.xml"
+        "merged": "com.example.travel_application.app-debug-78:/drawable_ic_avatar_home.xml.flat",
+        "source": "com.example.travel_application.app-main-80:/drawable/ic_avatar_home.xml"
     },
     {
-        "merged": "com.example.travel_application.app-debug-86:/drawable_ic_ticket.png.flat",
-        "source": "com.example.travel_application.app-main-88:/drawable/ic_ticket.png"
+        "merged": "com.example.travel_application.app-debug-78:/mipmap-hdpi_ic_app_round.webp.flat",
+        "source": "com.example.travel_application.app-main-80:/mipmap-hdpi/ic_app_round.webp"
     },
     {
-        "merged": "com.example.travel_application.app-debug-86:/mipmap-xxxhdpi_ic_app.webp.flat",
-        "source": "com.example.travel_application.app-main-88:/mipmap-xxxhdpi/ic_app.webp"
+        "merged": "com.example.travel_application.app-debug-78:/mipmap-anydpi-v26_ic_app.xml.flat",
+        "source": "com.example.travel_application.app-main-80:/mipmap-anydpi-v26/ic_app.xml"
     },
     {
-        "merged": "com.example.travel_application.app-debug-86:/mipmap-mdpi_ic_app_round.webp.flat",
-        "source": "com.example.travel_application.app-main-88:/mipmap-mdpi/ic_app_round.webp"
+        "merged": "com.example.travel_application.app-debug-78:/drawable_ic_ticket.png.flat",
+        "source": "com.example.travel_application.app-main-80:/drawable/ic_ticket.png"
     },
     {
-        "merged": "com.example.travel_application.app-debug-86:/mipmap-anydpi-v26_ic_app_round.xml.flat",
-        "source": "com.example.travel_application.app-main-88:/mipmap-anydpi-v26/ic_app_round.xml"
+        "merged": "com.example.travel_application.app-debug-78:/drawable_travel_background.jpg.flat",
+        "source": "com.example.travel_application.app-main-80:/drawable/travel_background.jpg"
     },
     {
-        "merged": "com.example.travel_application.app-debug-86:/drawable_ic_launcher_background.xml.flat",
-        "source": "com.example.travel_application.app-main-88:/drawable/ic_launcher_background.xml"
+        "merged": "com.example.travel_application.app-debug-78:/xml_backup_rules.xml.flat",
+        "source": "com.example.travel_application.app-main-80:/xml/backup_rules.xml"
     },
     {
-        "merged": "com.example.travel_application.app-debug-86:/drawable_app_logo.png.flat",
-        "source": "com.example.travel_application.app-main-88:/drawable/app_logo.png"
+        "merged": "com.example.travel_application.app-debug-78:/mipmap-xxhdpi_ic_app.webp.flat",
+        "source": "com.example.travel_application.app-main-80:/mipmap-xxhdpi/ic_app.webp"
     },
     {
-        "merged": "com.example.travel_application.app-debug-86:/drawable_ic_back_blue.png.flat",
-        "source": "com.example.travel_application.app-main-88:/drawable/ic_back_blue.png"
+        "merged": "com.example.travel_application.app-debug-78:/drawable_ic_restaurant.png.flat",
+        "source": "com.example.travel_application.app-main-80:/drawable/ic_restaurant.png"
     },
     {
-        "merged": "com.example.travel_application.app-debug-86:/mipmap-hdpi_ic_app_round.webp.flat",
-        "source": "com.example.travel_application.app-main-88:/mipmap-hdpi/ic_app_round.webp"
+        "merged": "com.example.travel_application.app-debug-78:/drawable_ic_tour.jpg.flat",
+        "source": "com.example.travel_application.app-main-80:/drawable/ic_tour.jpg"
     },
     {
-        "merged": "com.example.travel_application.app-debug-86:/mipmap-xhdpi_ic_app.webp.flat",
-        "source": "com.example.travel_application.app-main-88:/mipmap-xhdpi/ic_app.webp"
-    },
-    {
-        "merged": "com.example.travel_application.app-debug-86:/drawable_ninhbinh_background.jpg.flat",
-        "source": "com.example.travel_application.app-main-88:/drawable/ninhbinh_background.jpg"
-    },
-    {
-        "merged": "com.example.travel_application.app-debug-86:/drawable_travel_background.jpg.flat",
-        "source": "com.example.travel_application.app-main-88:/drawable/travel_background.jpg"
+        "merged": "com.example.travel_application.app-debug-78:/drawable_backgrounnd_app_ic.xml.flat",
+        "source": "com.example.travel_application.app-main-80:/drawable/backgrounnd_app_ic.xml"
     }
 ]
