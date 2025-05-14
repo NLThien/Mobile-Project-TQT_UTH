@@ -19,7 +19,8 @@ import javax.inject.Provider;
     "unchecked",
     "rawtypes",
     "KotlinInternal",
-    "KotlinInternalInJava"
+    "KotlinInternalInJava",
+    "cast"
 })
 public final class TravelPlaceViewModel_Factory implements Factory<TravelPlaceViewModel> {
   private final Provider<TravelRepository> travelRepositoryProvider;

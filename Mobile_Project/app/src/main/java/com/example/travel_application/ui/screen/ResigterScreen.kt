@@ -39,12 +39,13 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.ui.text.input.TransformedText
 import androidx.compose.ui.text.AnnotatedString
 import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.travel_application.accessibility.AuthViewModel
 
 @Composable
 fun RegisterScreen(navController: NavController,
                    onRegisterSuccess: () -> Unit,
-                   authViewModel : AuthViewModel = viewModel()
+                   authViewModel : AuthViewModel = hiltViewModel()
 ) {
     var fullName by remember { mutableStateOf("") }
     var email by remember { mutableStateOf("") }

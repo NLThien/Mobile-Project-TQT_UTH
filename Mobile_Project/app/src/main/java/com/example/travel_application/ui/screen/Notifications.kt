@@ -24,40 +24,66 @@ import java.text.SimpleDateFormat
 import java.util.*
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
+import androidx.compose.runtime.LaunchedEffect
+import com.google.firebase.auth.FirebaseAuth
+import com.example.travel_application.viewmodel.NotificationViewModel
+import androidx.compose.runtime.collectAsState
+import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.setValue
+import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.mutableStateOf
+import com.example.travel_application.accessibility.AuthViewModel
+import com.example.travel_application.accessibility.ServiceLocator
+import com.example.travel_application.accessibility.TravelRepository
+import com.example.travel_application.db.TravelPlace
+import kotlin.let
+import android.util.Log
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
+import com.google.firebase.firestore.DocumentSnapshot
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun NotificationsScreen(navController: NavController) {
-    // Danh sách thông báo mẫu
-    val notifications = listOf(
-        Notification(
-            id = 1,
-            title = "Nhắc nhở tour",
-            message = "Tour Hạ Long của bạn sẽ bắt đầu vào ngày mai. Vui lòng đến điểm tập trung đúng giờ",
-            type = NotificationType.TOUR_REMINDER,
-            time = SimpleDateFormat("HH:mm dd/MM/yyyy", Locale.getDefault()).format(Date())
-        ),
-        Notification(
-            id = 2,
-            title = "Thanh toán thành công",
-            message = "Bạn đã thanh toán thành công cho tour Đà Nẵng. Vui lòng kiểm tra email để xem vé",
-            type = NotificationType.PAYMENT_SUCCESS,
-            time = SimpleDateFormat("HH:mm dd/MM/yyyy", Locale.getDefault()).format(Date())
-        ),
-        Notification(
-            id = 3,
-            title = "Cảm ơn",
-            message = "Cảm ơn bạn đã sử dụng dịch vụ của chúng tôi. Chúc bạn có chuyến đi vui vẻ!",
-            type = NotificationType.THANK_YOU,
-            time = SimpleDateFormat("HH:mm dd/MM/yyyy", Locale.getDefault()).format(Date())
-        ),
-        Notification(
-            id = 4,
-            title = "Khẩn cấp",
-            message = "Tour Sapa ngày 15/05 đã bị hoãn do thời tiết. Vui lòng liên hệ hỗ trợ để biết thêm chi tiết",
-            type = NotificationType.URGENT,
-            time = SimpleDateFormat("HH:mm dd/MM/yyyy", Locale.getDefault()).format(Date())
-        )
-    )
+fun NotificationsScreen(
+    navController: NavController,
+    authViewModel: AuthViewModel = viewModel()
+) {
+    // Lấy repository từ ServiceLocator
+    val travelRepository = remember {
+        ServiceLocator.get(TravelRepository::class.java)
+    }
+
+    var notifications by remember { mutableStateOf<List<Notification>>(emptyList()) }
+    var isLoading by remember { mutableStateOf(true) }
+    var error by remember { mutableStateOf<String?>(null) }
+    val currentUser = authViewModel.getCurrentUser() // Lấy thông tin user hiện tại
+    val userId = currentUser?.uid
+
+    Log.d("USER_ID_DEBUG", "UserID to query: $userId")
+
+    LaunchedEffect(userId) { // Chạy lại khi userId thay đổi
+        notifications = travelRepository.getUserNotifications(userId.toString())
+        isLoading = false
+    }
+
+    LaunchedEffect(Unit) {
+        try {
+            notifications = travelRepository.getUserNotifications(userId.toString())
+        } catch (e: Exception) {
+            error = "Failed to load places: ${e.message}"
+        } finally {
+            isLoading = false
+        }
+    }
+
+    if (userId == null) {
+        Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
+            Text("Vui lòng đăng nhập")
+        }
+        return
+    }
 
     Column(
         modifier = Modifier
@@ -77,31 +103,20 @@ fun NotificationsScreen(navController: NavController) {
                 tint = MaterialTheme.colorScheme.primary,
                 modifier = Modifier.size(28.dp)
             )
-
-            Spacer(modifier = Modifier.width(8.dp))
-
-            Text(
-                text = "Thông báo",
-                fontSize = 24.sp,
-                fontWeight = FontWeight.Bold,
-                color = MaterialTheme.colorScheme.primary
-            )
+            Text("Thông báo", style = MaterialTheme.typography.headlineSmall)
         }
 
         // Danh sách thông báo
-        LazyColumn(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(horizontal = 16.dp)
-        ) {
+        LazyColumn(modifier = Modifier.padding(horizontal = 16.dp)) {
             items(notifications) { notification ->
                 NotificationItem(
                     notification = notification,
-                    onNotificationClick = { notificationId ->
-                        navController.navigate("notificationDetail/$notificationId")
-                }
+                    onNotificationClick = { id ->
+                        navController.navigate("notificationDetail/${notification.id}"){
+                            launchSingleTop = true
+                        }
+                    }
                 )
-//                NotificationItem(notification = notification)
                 Spacer(modifier = Modifier.height(8.dp))
             }
         }
@@ -111,7 +126,7 @@ fun NotificationsScreen(navController: NavController) {
 @Composable
 fun NotificationItem(
     notification: Notification,
-    onNotificationClick: (Int) -> Unit = {}
+    onNotificationClick: (String) -> Unit = {}
 ) {
     val backgroundColor = when(notification.type) {
         NotificationType.TOUR_REMINDER -> Color(0xFFE3F2FD)
@@ -163,11 +178,4 @@ fun NotificationItem(
                 color = Color.DarkGray)
         }
     }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun PreviewNotificationsScreen() {
-    val navController = NavController(LocalContext.current)
-    NotificationsScreen(navController = navController)
 }

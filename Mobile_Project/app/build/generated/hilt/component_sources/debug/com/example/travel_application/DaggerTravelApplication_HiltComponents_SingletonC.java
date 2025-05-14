@@ -6,12 +6,18 @@ import android.view.View;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.SavedStateHandle;
 import androidx.lifecycle.ViewModel;
-import com.example.travel_application.accessibility.FirebaseModule;
+import com.example.travel_application.accessibility.FirebaseModule_ProvideFirestoreFactory;
+import com.example.travel_application.accessibility.FirebaseModule_ProvideTravelRepositoryFactory;
+import com.example.travel_application.accessibility.TravelRepository;
+import com.example.travel_application.viewmodel.NotificationViewModel;
+import com.example.travel_application.viewmodel.NotificationViewModel_HiltModules;
+import com.example.travel_application.viewmodel.TravelPlaceViewModel;
+import com.example.travel_application.viewmodel.TravelPlaceViewModel_HiltModules;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableSet;
+import com.google.firebase.firestore.FirebaseFirestore;
 import dagger.hilt.android.ActivityRetainedLifecycle;
 import dagger.hilt.android.ViewModelLifecycle;
-import dagger.hilt.android.flags.HiltWrapper_FragmentGetContextFix_FragmentGetContextFixModule;
 import dagger.hilt.android.internal.builders.ActivityComponentBuilder;
 import dagger.hilt.android.internal.builders.ActivityRetainedComponentBuilder;
 import dagger.hilt.android.internal.builders.FragmentComponentBuilder;
@@ -26,11 +32,14 @@ import dagger.hilt.android.internal.managers.SavedStateHandleHolder;
 import dagger.hilt.android.internal.modules.ApplicationContextModule;
 import dagger.internal.DaggerGenerated;
 import dagger.internal.DoubleCheck;
+import dagger.internal.IdentifierNameString;
+import dagger.internal.KeepFieldType;
+import dagger.internal.LazyClassKeyMap;
 import dagger.internal.Preconditions;
+import dagger.internal.Provider;
 import java.util.Map;
 import java.util.Set;
 import javax.annotation.processing.Generated;
-import javax.inject.Provider;
 
 @DaggerGenerated
 @Generated(
@@ -41,7 +50,8 @@ import javax.inject.Provider;
     "unchecked",
     "rawtypes",
     "KotlinInternal",
-    "KotlinInternalInJava"
+    "KotlinInternalInJava",
+    "cast"
 })
 public final class DaggerTravelApplication_HiltComponents_SingletonC {
   private DaggerTravelApplication_HiltComponents_SingletonC() {
@@ -65,25 +75,6 @@ public final class DaggerTravelApplication_HiltComponents_SingletonC {
     @Deprecated
     public Builder applicationContextModule(ApplicationContextModule applicationContextModule) {
       Preconditions.checkNotNull(applicationContextModule);
-      return this;
-    }
-
-    /**
-     * @deprecated This module is declared, but an instance is not used in the component. This method is a no-op. For more, see https://dagger.dev/unused-modules.
-     */
-    @Deprecated
-    public Builder firebaseModule(FirebaseModule firebaseModule) {
-      Preconditions.checkNotNull(firebaseModule);
-      return this;
-    }
-
-    /**
-     * @deprecated This module is declared, but an instance is not used in the component. This method is a no-op. For more, see https://dagger.dev/unused-modules.
-     */
-    @Deprecated
-    public Builder hiltWrapper_FragmentGetContextFix_FragmentGetContextFixModule(
-        HiltWrapper_FragmentGetContextFix_FragmentGetContextFixModule hiltWrapper_FragmentGetContextFix_FragmentGetContextFixModule) {
-      Preconditions.checkNotNull(hiltWrapper_FragmentGetContextFix_FragmentGetContextFixModule);
       return this;
     }
 
@@ -382,12 +373,12 @@ public final class DaggerTravelApplication_HiltComponents_SingletonC {
 
     @Override
     public DefaultViewModelFactories.InternalFactoryFactory getHiltInternalFactoryFactory() {
-      return DefaultViewModelFactories_InternalFactoryFactory_Factory.newInstance(ImmutableMap.<Class<?>, Boolean>of(), new ViewModelCBuilder(singletonCImpl, activityRetainedCImpl));
+      return DefaultViewModelFactories_InternalFactoryFactory_Factory.newInstance(getViewModelKeys(), new ViewModelCBuilder(singletonCImpl, activityRetainedCImpl));
     }
 
     @Override
     public Map<Class<?>, Boolean> getViewModelKeys() {
-      return ImmutableMap.<Class<?>, Boolean>of();
+      return LazyClassKeyMap.<Boolean>of(ImmutableMap.<String, Boolean>of(LazyClassKeyProvider.com_example_travel_application_viewmodel_NotificationViewModel, NotificationViewModel_HiltModules.KeyModule.provide(), LazyClassKeyProvider.com_example_travel_application_viewmodel_TravelPlaceViewModel, TravelPlaceViewModel_HiltModules.KeyModule.provide()));
     }
 
     @Override
@@ -404,6 +395,19 @@ public final class DaggerTravelApplication_HiltComponents_SingletonC {
     public ViewComponentBuilder viewComponentBuilder() {
       return new ViewCBuilder(singletonCImpl, activityRetainedCImpl, activityCImpl);
     }
+
+    @IdentifierNameString
+    private static final class LazyClassKeyProvider {
+      static String com_example_travel_application_viewmodel_NotificationViewModel = "com.example.travel_application.viewmodel.NotificationViewModel";
+
+      static String com_example_travel_application_viewmodel_TravelPlaceViewModel = "com.example.travel_application.viewmodel.TravelPlaceViewModel";
+
+      @KeepFieldType
+      NotificationViewModel com_example_travel_application_viewmodel_NotificationViewModel2;
+
+      @KeepFieldType
+      TravelPlaceViewModel com_example_travel_application_viewmodel_TravelPlaceViewModel2;
+    }
   }
 
   private static final class ViewModelCImpl extends TravelApplication_HiltComponents.ViewModelC {
@@ -413,23 +417,80 @@ public final class DaggerTravelApplication_HiltComponents_SingletonC {
 
     private final ViewModelCImpl viewModelCImpl = this;
 
+    private Provider<NotificationViewModel> notificationViewModelProvider;
+
+    private Provider<TravelPlaceViewModel> travelPlaceViewModelProvider;
+
     private ViewModelCImpl(SingletonCImpl singletonCImpl,
         ActivityRetainedCImpl activityRetainedCImpl, SavedStateHandle savedStateHandleParam,
         ViewModelLifecycle viewModelLifecycleParam) {
       this.singletonCImpl = singletonCImpl;
       this.activityRetainedCImpl = activityRetainedCImpl;
 
+      initialize(savedStateHandleParam, viewModelLifecycleParam);
 
     }
 
+    @SuppressWarnings("unchecked")
+    private void initialize(final SavedStateHandle savedStateHandleParam,
+        final ViewModelLifecycle viewModelLifecycleParam) {
+      this.notificationViewModelProvider = new SwitchingProvider<>(singletonCImpl, activityRetainedCImpl, viewModelCImpl, 0);
+      this.travelPlaceViewModelProvider = new SwitchingProvider<>(singletonCImpl, activityRetainedCImpl, viewModelCImpl, 1);
+    }
+
     @Override
-    public Map<Class<?>, Provider<ViewModel>> getHiltViewModelMap() {
-      return ImmutableMap.<Class<?>, Provider<ViewModel>>of();
+    public Map<Class<?>, javax.inject.Provider<ViewModel>> getHiltViewModelMap() {
+      return LazyClassKeyMap.<javax.inject.Provider<ViewModel>>of(ImmutableMap.<String, javax.inject.Provider<ViewModel>>of(LazyClassKeyProvider.com_example_travel_application_viewmodel_NotificationViewModel, ((Provider) notificationViewModelProvider), LazyClassKeyProvider.com_example_travel_application_viewmodel_TravelPlaceViewModel, ((Provider) travelPlaceViewModelProvider)));
     }
 
     @Override
     public Map<Class<?>, Object> getHiltViewModelAssistedMap() {
       return ImmutableMap.<Class<?>, Object>of();
+    }
+
+    @IdentifierNameString
+    private static final class LazyClassKeyProvider {
+      static String com_example_travel_application_viewmodel_NotificationViewModel = "com.example.travel_application.viewmodel.NotificationViewModel";
+
+      static String com_example_travel_application_viewmodel_TravelPlaceViewModel = "com.example.travel_application.viewmodel.TravelPlaceViewModel";
+
+      @KeepFieldType
+      NotificationViewModel com_example_travel_application_viewmodel_NotificationViewModel2;
+
+      @KeepFieldType
+      TravelPlaceViewModel com_example_travel_application_viewmodel_TravelPlaceViewModel2;
+    }
+
+    private static final class SwitchingProvider<T> implements Provider<T> {
+      private final SingletonCImpl singletonCImpl;
+
+      private final ActivityRetainedCImpl activityRetainedCImpl;
+
+      private final ViewModelCImpl viewModelCImpl;
+
+      private final int id;
+
+      SwitchingProvider(SingletonCImpl singletonCImpl, ActivityRetainedCImpl activityRetainedCImpl,
+          ViewModelCImpl viewModelCImpl, int id) {
+        this.singletonCImpl = singletonCImpl;
+        this.activityRetainedCImpl = activityRetainedCImpl;
+        this.viewModelCImpl = viewModelCImpl;
+        this.id = id;
+      }
+
+      @SuppressWarnings("unchecked")
+      @Override
+      public T get() {
+        switch (id) {
+          case 0: // com.example.travel_application.viewmodel.NotificationViewModel 
+          return (T) new NotificationViewModel(singletonCImpl.provideTravelRepositoryProvider.get());
+
+          case 1: // com.example.travel_application.viewmodel.TravelPlaceViewModel 
+          return (T) new TravelPlaceViewModel(singletonCImpl.provideTravelRepositoryProvider.get());
+
+          default: throw new AssertionError(id);
+        }
+      }
     }
   }
 
@@ -505,9 +566,20 @@ public final class DaggerTravelApplication_HiltComponents_SingletonC {
   private static final class SingletonCImpl extends TravelApplication_HiltComponents.SingletonC {
     private final SingletonCImpl singletonCImpl = this;
 
+    private Provider<FirebaseFirestore> provideFirestoreProvider;
+
+    private Provider<TravelRepository> provideTravelRepositoryProvider;
+
     private SingletonCImpl() {
 
+      initialize();
 
+    }
+
+    @SuppressWarnings("unchecked")
+    private void initialize() {
+      this.provideFirestoreProvider = DoubleCheck.provider(new SwitchingProvider<FirebaseFirestore>(singletonCImpl, 1));
+      this.provideTravelRepositoryProvider = DoubleCheck.provider(new SwitchingProvider<TravelRepository>(singletonCImpl, 0));
     }
 
     @Override
@@ -527,6 +599,31 @@ public final class DaggerTravelApplication_HiltComponents_SingletonC {
     @Override
     public ServiceComponentBuilder serviceComponentBuilder() {
       return new ServiceCBuilder(singletonCImpl);
+    }
+
+    private static final class SwitchingProvider<T> implements Provider<T> {
+      private final SingletonCImpl singletonCImpl;
+
+      private final int id;
+
+      SwitchingProvider(SingletonCImpl singletonCImpl, int id) {
+        this.singletonCImpl = singletonCImpl;
+        this.id = id;
+      }
+
+      @SuppressWarnings("unchecked")
+      @Override
+      public T get() {
+        switch (id) {
+          case 0: // com.example.travel_application.accessibility.TravelRepository 
+          return (T) FirebaseModule_ProvideTravelRepositoryFactory.provideTravelRepository(singletonCImpl.provideFirestoreProvider.get());
+
+          case 1: // com.google.firebase.firestore.FirebaseFirestore 
+          return (T) FirebaseModule_ProvideFirestoreFactory.provideFirestore();
+
+          default: throw new AssertionError(id);
+        }
+      }
     }
   }
 }

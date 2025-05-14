@@ -1,6 +1,6 @@
 package com.example.travel_application.db;
 
-@kotlin.Metadata(mv = {1, 9, 0}, k = 1, xi = 48, d1 = {"\u0000@\n\u0002\u0018\u0002\n\u0002\u0010\u0000\n\u0002\b\u0002\n\u0002\u0010\u000e\n\u0002\b\u0004\n\u0002\u0010\u0007\n\u0000\n\u0002\u0010\t\n\u0000\n\u0002\u0018\u0002\n\u0002\b\u0003\n\u0002\u0010 \n\u0002\b\u001c\n\u0002\u0010\u000b\n\u0002\b\u0002\n\u0002\u0010\b\n\u0002\b\u0003\b\u0087\b\u0018\u0000 32\u00020\u0001:\u00013B\u0007\b\u0016\u00a2\u0006\u0002\u0010\u0002B]\u0012\u0006\u0010\u0003\u001a\u00020\u0004\u0012\u0006\u0010\u0005\u001a\u00020\u0004\u0012\u0006\u0010\u0006\u001a\u00020\u0004\u0012\u0006\u0010\u0007\u001a\u00020\u0004\u0012\u0006\u0010\b\u001a\u00020\t\u0012\u0006\u0010\n\u001a\u00020\u000b\u0012\u0006\u0010\f\u001a\u00020\r\u0012\u0006\u0010\u000e\u001a\u00020\u0004\u0012\u0006\u0010\u000f\u001a\u00020\u0004\u0012\u000e\b\u0002\u0010\u0010\u001a\b\u0012\u0004\u0012\u00020\u00040\u0011\u00a2\u0006\u0002\u0010\u0012J\t\u0010\"\u001a\u00020\u0004H\u00c6\u0003J\u000f\u0010#\u001a\b\u0012\u0004\u0012\u00020\u00040\u0011H\u00c6\u0003J\t\u0010$\u001a\u00020\u0004H\u00c6\u0003J\t\u0010%\u001a\u00020\u0004H\u00c6\u0003J\t\u0010&\u001a\u00020\u0004H\u00c6\u0003J\t\u0010'\u001a\u00020\tH\u00c6\u0003J\t\u0010(\u001a\u00020\u000bH\u00c6\u0003J\t\u0010)\u001a\u00020\rH\u00c6\u0003J\t\u0010*\u001a\u00020\u0004H\u00c6\u0003J\t\u0010+\u001a\u00020\u0004H\u00c6\u0003Js\u0010,\u001a\u00020\u00002\b\b\u0002\u0010\u0003\u001a\u00020\u00042\b\b\u0002\u0010\u0005\u001a\u00020\u00042\b\b\u0002\u0010\u0006\u001a\u00020\u00042\b\b\u0002\u0010\u0007\u001a\u00020\u00042\b\b\u0002\u0010\b\u001a\u00020\t2\b\b\u0002\u0010\n\u001a\u00020\u000b2\b\b\u0002\u0010\f\u001a\u00020\r2\b\b\u0002\u0010\u000e\u001a\u00020\u00042\b\b\u0002\u0010\u000f\u001a\u00020\u00042\u000e\b\u0002\u0010\u0010\u001a\b\u0012\u0004\u0012\u00020\u00040\u0011H\u00c6\u0001J\u0013\u0010-\u001a\u00020.2\b\u0010/\u001a\u0004\u0018\u00010\u0001H\u00d6\u0003J\t\u00100\u001a\u000201H\u00d6\u0001J\t\u00102\u001a\u00020\u0004H\u00d6\u0001R\u0011\u0010\f\u001a\u00020\r\u00a2\u0006\b\n\u0000\u001a\u0004\b\u0013\u0010\u0014R\u0011\u0010\u000f\u001a\u00020\u0004\u00a2\u0006\b\n\u0000\u001a\u0004\b\u0015\u0010\u0016R\u0017\u0010\u0010\u001a\b\u0012\u0004\u0012\u00020\u00040\u0011\u00a2\u0006\b\n\u0000\u001a\u0004\b\u0017\u0010\u0018R\u0011\u0010\u0003\u001a\u00020\u0004\u00a2\u0006\b\n\u0000\u001a\u0004\b\u0019\u0010\u0016R\u0011\u0010\u0007\u001a\u00020\u0004\u00a2\u0006\b\n\u0000\u001a\u0004\b\u001a\u0010\u0016R\u0011\u0010\u0006\u001a\u00020\u0004\u00a2\u0006\b\n\u0000\u001a\u0004\b\u001b\u0010\u0016R\u0011\u0010\u0005\u001a\u00020\u0004\u00a2\u0006\b\n\u0000\u001a\u0004\b\u001c\u0010\u0016R\u0011\u0010\u000e\u001a\u00020\u0004\u00a2\u0006\b\n\u0000\u001a\u0004\b\u001d\u0010\u0016R\u0011\u0010\n\u001a\u00020\u000b\u00a2\u0006\b\n\u0000\u001a\u0004\b\u001e\u0010\u001fR\u0011\u0010\b\u001a\u00020\t\u00a2\u0006\b\n\u0000\u001a\u0004\b \u0010!\u00a8\u00064"}, d2 = {"Lcom/example/travel_application/db/TravelPlace;", "", "()V", "id", "", "name", "location", "imageURL", "rating", "", "price", "", "coordinates", "Lcom/google/android/gms/maps/model/LatLng;", "placeId", "description", "facilities", "", "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;FJLcom/google/android/gms/maps/model/LatLng;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;)V", "getCoordinates", "()Lcom/google/android/gms/maps/model/LatLng;", "getDescription", "()Ljava/lang/String;", "getFacilities", "()Ljava/util/List;", "getId", "getImageURL", "getLocation", "getName", "getPlaceId", "getPrice", "()J", "getRating", "()F", "component1", "component10", "component2", "component3", "component4", "component5", "component6", "component7", "component8", "component9", "copy", "equals", "", "other", "hashCode", "", "toString", "Companion", "app_debug"})
+@kotlin.Metadata(mv = {1, 9, 0}, k = 1, xi = 48, d1 = {"\u0000>\n\u0002\u0018\u0002\n\u0002\u0010\u0000\n\u0002\b\u0002\n\u0002\u0010\u000e\n\u0002\b\u0004\n\u0002\u0010$\n\u0000\n\u0002\u0010\u0007\n\u0000\n\u0002\u0010\t\n\u0000\n\u0002\u0018\u0002\n\u0002\b\u001e\n\u0002\u0010\u000b\n\u0002\b\u0002\n\u0002\u0010\b\n\u0002\b\u0003\b\u0087\b\u0018\u0000 32\u00020\u0001:\u00013B\u0007\b\u0016\u00a2\u0006\u0002\u0010\u0002Bc\u0012\u0006\u0010\u0003\u001a\u00020\u0004\u0012\u0006\u0010\u0005\u001a\u00020\u0004\u0012\u0006\u0010\u0006\u001a\u00020\u0004\u0012\u0006\u0010\u0007\u001a\u00020\u0004\u0012\u0014\b\u0002\u0010\b\u001a\u000e\u0012\u0004\u0012\u00020\u0004\u0012\u0004\u0012\u00020\u00040\t\u0012\u0006\u0010\n\u001a\u00020\u000b\u0012\u0006\u0010\f\u001a\u00020\r\u0012\u0006\u0010\u000e\u001a\u00020\u000f\u0012\u0006\u0010\u0010\u001a\u00020\u0004\u0012\u0006\u0010\u0011\u001a\u00020\u0004\u00a2\u0006\u0002\u0010\u0012J\t\u0010\"\u001a\u00020\u0004H\u00c6\u0003J\t\u0010#\u001a\u00020\u0004H\u00c6\u0003J\t\u0010$\u001a\u00020\u0004H\u00c6\u0003J\t\u0010%\u001a\u00020\u0004H\u00c6\u0003J\t\u0010&\u001a\u00020\u0004H\u00c6\u0003J\u0015\u0010'\u001a\u000e\u0012\u0004\u0012\u00020\u0004\u0012\u0004\u0012\u00020\u00040\tH\u00c6\u0003J\t\u0010(\u001a\u00020\u000bH\u00c6\u0003J\t\u0010)\u001a\u00020\rH\u00c6\u0003J\t\u0010*\u001a\u00020\u000fH\u00c6\u0003J\t\u0010+\u001a\u00020\u0004H\u00c6\u0003Jy\u0010,\u001a\u00020\u00002\b\b\u0002\u0010\u0003\u001a\u00020\u00042\b\b\u0002\u0010\u0005\u001a\u00020\u00042\b\b\u0002\u0010\u0006\u001a\u00020\u00042\b\b\u0002\u0010\u0007\u001a\u00020\u00042\u0014\b\u0002\u0010\b\u001a\u000e\u0012\u0004\u0012\u00020\u0004\u0012\u0004\u0012\u00020\u00040\t2\b\b\u0002\u0010\n\u001a\u00020\u000b2\b\b\u0002\u0010\f\u001a\u00020\r2\b\b\u0002\u0010\u000e\u001a\u00020\u000f2\b\b\u0002\u0010\u0010\u001a\u00020\u00042\b\b\u0002\u0010\u0011\u001a\u00020\u0004H\u00c6\u0001J\u0013\u0010-\u001a\u00020.2\b\u0010/\u001a\u0004\u0018\u00010\u0001H\u00d6\u0003J\t\u00100\u001a\u000201H\u00d6\u0001J\t\u00102\u001a\u00020\u0004H\u00d6\u0001R\u0011\u0010\u000e\u001a\u00020\u000f\u00a2\u0006\b\n\u0000\u001a\u0004\b\u0013\u0010\u0014R\u0011\u0010\u0011\u001a\u00020\u0004\u00a2\u0006\b\n\u0000\u001a\u0004\b\u0015\u0010\u0016R\u0011\u0010\u0003\u001a\u00020\u0004\u00a2\u0006\b\n\u0000\u001a\u0004\b\u0017\u0010\u0016R\u0011\u0010\u0007\u001a\u00020\u0004\u00a2\u0006\b\n\u0000\u001a\u0004\b\u0018\u0010\u0016R\u001d\u0010\b\u001a\u000e\u0012\u0004\u0012\u00020\u0004\u0012\u0004\u0012\u00020\u00040\t\u00a2\u0006\b\n\u0000\u001a\u0004\b\u0019\u0010\u001aR\u0011\u0010\u0006\u001a\u00020\u0004\u00a2\u0006\b\n\u0000\u001a\u0004\b\u001b\u0010\u0016R\u0011\u0010\u0005\u001a\u00020\u0004\u00a2\u0006\b\n\u0000\u001a\u0004\b\u001c\u0010\u0016R\u0011\u0010\u0010\u001a\u00020\u0004\u00a2\u0006\b\n\u0000\u001a\u0004\b\u001d\u0010\u0016R\u0011\u0010\f\u001a\u00020\r\u00a2\u0006\b\n\u0000\u001a\u0004\b\u001e\u0010\u001fR\u0011\u0010\n\u001a\u00020\u000b\u00a2\u0006\b\n\u0000\u001a\u0004\b \u0010!\u00a8\u00064"}, d2 = {"Lcom/example/travel_application/db/TravelPlace;", "", "()V", "id", "", "name", "location", "imageURL", "images", "", "rating", "", "price", "", "coordinates", "Lcom/google/android/gms/maps/model/LatLng;", "placeId", "description", "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/Map;FJLcom/google/android/gms/maps/model/LatLng;Ljava/lang/String;Ljava/lang/String;)V", "getCoordinates", "()Lcom/google/android/gms/maps/model/LatLng;", "getDescription", "()Ljava/lang/String;", "getId", "getImageURL", "getImages", "()Ljava/util/Map;", "getLocation", "getName", "getPlaceId", "getPrice", "()J", "getRating", "()F", "component1", "component10", "component2", "component3", "component4", "component5", "component6", "component7", "component8", "component9", "copy", "equals", "", "other", "hashCode", "", "toString", "Companion", "app_debug"})
 public final class TravelPlace {
     @org.jetbrains.annotations.NotNull()
     private final java.lang.String id = null;
@@ -10,6 +10,8 @@ public final class TravelPlace {
     private final java.lang.String location = null;
     @org.jetbrains.annotations.NotNull()
     private final java.lang.String imageURL = null;
+    @org.jetbrains.annotations.NotNull()
+    private final java.util.Map<java.lang.String, java.lang.String> images = null;
     private final float rating = 0.0F;
     private final long price = 0L;
     @org.jetbrains.annotations.NotNull()
@@ -19,19 +21,17 @@ public final class TravelPlace {
     @org.jetbrains.annotations.NotNull()
     private final java.lang.String description = null;
     @org.jetbrains.annotations.NotNull()
-    private final java.util.List<java.lang.String> facilities = null;
-    @org.jetbrains.annotations.NotNull()
     public static final com.example.travel_application.db.TravelPlace.Companion Companion = null;
     
     public TravelPlace(@org.jetbrains.annotations.NotNull()
     java.lang.String id, @org.jetbrains.annotations.NotNull()
     java.lang.String name, @org.jetbrains.annotations.NotNull()
     java.lang.String location, @org.jetbrains.annotations.NotNull()
-    java.lang.String imageURL, float rating, long price, @org.jetbrains.annotations.NotNull()
+    java.lang.String imageURL, @org.jetbrains.annotations.NotNull()
+    java.util.Map<java.lang.String, java.lang.String> images, float rating, long price, @org.jetbrains.annotations.NotNull()
     com.google.android.gms.maps.model.LatLng coordinates, @org.jetbrains.annotations.NotNull()
     java.lang.String placeId, @org.jetbrains.annotations.NotNull()
-    java.lang.String description, @org.jetbrains.annotations.NotNull()
-    java.util.List<java.lang.String> facilities) {
+    java.lang.String description) {
         super();
     }
     
@@ -52,6 +52,11 @@ public final class TravelPlace {
     
     @org.jetbrains.annotations.NotNull()
     public final java.lang.String getImageURL() {
+        return null;
+    }
+    
+    @org.jetbrains.annotations.NotNull()
+    public final java.util.Map<java.lang.String, java.lang.String> getImages() {
         return null;
     }
     
@@ -78,11 +83,6 @@ public final class TravelPlace {
         return null;
     }
     
-    @org.jetbrains.annotations.NotNull()
-    public final java.util.List<java.lang.String> getFacilities() {
-        return null;
-    }
-    
     public TravelPlace() {
         super();
     }
@@ -93,7 +93,7 @@ public final class TravelPlace {
     }
     
     @org.jetbrains.annotations.NotNull()
-    public final java.util.List<java.lang.String> component10() {
+    public final java.lang.String component10() {
         return null;
     }
     
@@ -112,21 +112,21 @@ public final class TravelPlace {
         return null;
     }
     
-    public final float component5() {
+    @org.jetbrains.annotations.NotNull()
+    public final java.util.Map<java.lang.String, java.lang.String> component5() {
+        return null;
+    }
+    
+    public final float component6() {
         return 0.0F;
     }
     
-    public final long component6() {
+    public final long component7() {
         return 0L;
     }
     
     @org.jetbrains.annotations.NotNull()
-    public final com.google.android.gms.maps.model.LatLng component7() {
-        return null;
-    }
-    
-    @org.jetbrains.annotations.NotNull()
-    public final java.lang.String component8() {
+    public final com.google.android.gms.maps.model.LatLng component8() {
         return null;
     }
     
@@ -140,11 +140,11 @@ public final class TravelPlace {
     java.lang.String id, @org.jetbrains.annotations.NotNull()
     java.lang.String name, @org.jetbrains.annotations.NotNull()
     java.lang.String location, @org.jetbrains.annotations.NotNull()
-    java.lang.String imageURL, float rating, long price, @org.jetbrains.annotations.NotNull()
+    java.lang.String imageURL, @org.jetbrains.annotations.NotNull()
+    java.util.Map<java.lang.String, java.lang.String> images, float rating, long price, @org.jetbrains.annotations.NotNull()
     com.google.android.gms.maps.model.LatLng coordinates, @org.jetbrains.annotations.NotNull()
     java.lang.String placeId, @org.jetbrains.annotations.NotNull()
-    java.lang.String description, @org.jetbrains.annotations.NotNull()
-    java.util.List<java.lang.String> facilities) {
+    java.lang.String description) {
         return null;
     }
     

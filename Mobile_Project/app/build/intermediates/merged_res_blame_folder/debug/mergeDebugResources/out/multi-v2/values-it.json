@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.travel_application.app-mergeDebugResources-76:/values-it/values-it.xml",
+            "outputFile": "com.example.travel_application.app-mergeDebugResources-77:/values-it/values-it.xml",
             "map": [
                 {
                     "source": "C:\\Users\\ROG\\.gradle\\caches\\8.11.1\\transforms\\25602a372c0c599c914fffd0a177393e\\transformed\\credentials-1.2.0-rc01\\res\\values-it\\values-it.xml",
@@ -137,6 +137,23 @@
                         "startOffsets": "3487,3872,3970,4080",
                         "endColumns": "99,97,109,102",
                         "endOffsets": "3582,3965,4075,4178"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\ROG\\.gradle\\caches\\8.11.1\\transforms\\05e13ee24b0a2bc4f07b2d179f147f22\\transformed\\zxing-android-embedded-4.3.0\\res\\values-it\\values-it.xml",
+                    "from": {
+                        "startLines": "2,3,4,5",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "55,114,161,334",
+                        "endColumns": "58,46,172,128",
+                        "endOffsets": "109,156,329,458"
+                    },
+                    "to": {
+                        "startLines": "110,111,112,113",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "11904,11963,12010,12183",
+                        "endColumns": "58,46,172,128",
+                        "endOffsets": "11958,12005,12178,12307"
                     }
                 }
             ]

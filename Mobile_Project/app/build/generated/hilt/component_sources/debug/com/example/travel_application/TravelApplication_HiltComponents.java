@@ -1,6 +1,7 @@
 package com.example.travel_application;
 
 import com.example.travel_application.accessibility.FirebaseModule;
+import com.example.travel_application.viewmodel.NotificationViewModel_HiltModules;
 import com.example.travel_application.viewmodel.TravelPlaceViewModel_HiltModules;
 import dagger.Binds;
 import dagger.Component;
@@ -155,6 +156,7 @@ public final class TravelApplication_HiltComponents {
       modules = {
           HiltWrapper_ActivityRetainedComponentManager_LifecycleModule.class,
           HiltWrapper_SavedStateHandleModule.class,
+          NotificationViewModel_HiltModules.KeyModule.class,
           ActivityCBuilderModule.class,
           ViewModelCBuilderModule.class,
           TravelPlaceViewModel_HiltModules.KeyModule.class
@@ -194,6 +196,7 @@ public final class TravelApplication_HiltComponents {
   @Subcomponent(
       modules = {
           HiltWrapper_HiltViewModelFactory_ViewModelModule.class,
+          NotificationViewModel_HiltModules.BindsModule.class,
           TravelPlaceViewModel_HiltModules.BindsModule.class
       }
   )

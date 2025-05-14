@@ -38,6 +38,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import com.example.travel_application.viewmodel.TravelPlaceViewModel
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.travel_application.accessibility.AuthViewModel
+import org.checkerframework.checker.units.qual.h
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
@@ -63,7 +64,6 @@ fun TravelApp() {
         startDestination = if (isLoggedIn.value) "main" else "login",
     ) {
         composable("login") {
-            val authViewModel: AuthViewModel = viewModel()
             LoginScreen(
                 navController = navController,
                 onLoginSuccess = {
@@ -77,7 +77,6 @@ fun TravelApp() {
         }
 
         composable("resigter") {
-            val authViewModel: AuthViewModel = viewModel()
             RegisterScreen(
                 navController = navController,
                 onRegisterSuccess = {
@@ -99,18 +98,21 @@ fun TravelApp() {
 
 
         composable("notifications") {
-            NotificationsScreenWithBottomBar(navController)
+            NotificationsScreenWithBottomBar(
+                navController = navController
+            )
         }
 
         composable(
             route = "notificationDetail/{notificationId}",
             arguments = listOf(
-                navArgument("notificationId") { type = NavType.IntType }
+                navArgument("notificationId") { type = NavType.StringType }
             )
         ) { backStackEntry ->
+            val notificationId = backStackEntry.arguments?.getString("notificationId")
             NotificationDetailScreen(
                 navController = navController,
-                notificationId = backStackEntry.arguments?.getInt("notificationId")
+                notificationId = notificationId
             )
         }
 
@@ -126,7 +128,7 @@ fun TravelApp() {
 @Composable
 fun StackPages(navController: NavController){
     var currentScreen by remember { mutableStateOf("Login") }
-    var authViewModel: AuthViewModel = viewModel()
+    var authViewModel: AuthViewModel = hiltViewModel()
     when(currentScreen){
         "Login" -> LoginScreen(
             navController,
@@ -164,7 +166,10 @@ fun NotificationsScreenWithBottomBar(navController: NavHostController) {
         bottomBar = { AppBottomNavigation(navController) }
     ) { innerPadding ->
         Box(modifier = Modifier.padding(innerPadding)) {
-            NotificationsScreen(navController)
+            NotificationsScreen(
+                navController,
+                authViewModel = hiltViewModel()
+            )
         }
     }
 }
@@ -172,7 +177,7 @@ fun NotificationsScreenWithBottomBar(navController: NavHostController) {
 @Preview(showBackground = true)
 @Composable
 fun LoginScreenPreview() {
-    var authViewModel: AuthViewModel = viewModel()
+    var authViewModel: AuthViewModel = hiltViewModel()
     AppTheme {
         LoginScreen(navController = rememberNavController(), onLoginSuccess = {true}, authViewModel)
     }

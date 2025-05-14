@@ -59,9 +59,25 @@ import com.example.travel_application.viewmodel.TravelPlaceViewModel
 fun LocationScreen(
     navController: NavController
 ) {
+    // Lấy repository từ ServiceLocator
+    val travelRepository = remember {
+        ServiceLocator.get(TravelRepository::class.java)
+    }
+    var travelPlaces by remember { mutableStateOf<List<TravelPlace>>(emptyList()) }
+    var isLoading by remember { mutableStateOf(true) }
+    var error by remember { mutableStateOf<String?>(null) }
+
+    LaunchedEffect(Unit) {
+        try {
+            travelPlaces = travelRepository.getTravelPlaces()
+        } catch (e: Exception) {
+            error = "Failed to load places: ${e.message}"
+        } finally {
+            isLoading = false
+        }
+    }
     val context = LocalContext.current
     val messageBox = rememberMessageBoxState()
-    val travelPlaces = remember { mutableStateListOf<TravelPlace?>() }
 
     var selectedPlace by remember { mutableStateOf<TravelPlace?>(null) }
 
@@ -112,6 +128,29 @@ fun LocationScreen(
         }
     }
 
+    // Tự động zoom khi có dữ liệu
+    LaunchedEffect(travelPlaces) {
+        if (travelPlaces.isNotEmpty()) {
+            val bounds = LatLngBounds.Builder()
+            travelPlaces.forEach { bounds.include(it.coordinates) }
+
+            try {
+                cameraPositionState.animate(
+                    CameraUpdateFactory.newLatLngBounds(bounds.build(), 100),
+                    1000
+                )
+            } catch (e: Exception) {
+                cameraPositionState.animate(
+                    CameraUpdateFactory.newLatLngZoom(
+                        travelPlaces.first().coordinates,
+                        10f
+                    ),
+                    500
+                )
+            }
+        }
+    }
+
     Spacer(modifier = Modifier.height(24.dp))
 
     Column(
@@ -159,21 +198,21 @@ fun LocationScreen(
 
             Spacer(modifier = Modifier.height(8.dp))
 
-            LazyRow(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(start = 16.dp),
-                horizontalArrangement = Arrangement.spacedBy(12.dp),
-                contentPadding = PaddingValues(end = 16.dp)
-            ) {
-                items(travelPlaces.filterNotNull()) { place ->
-                    PlaceCard(
-                        place = place,
-                        isSelected = place.id == selectedPlace?.id,
-                        onItemClick = { selectedPlace = place }
-                    )
-                }
-            }
+//            LazyRow(
+//                modifier = Modifier
+//                    .fillMaxWidth()
+//                    .padding(start = 16.dp),
+//                horizontalArrangement = Arrangement.spacedBy(12.dp),
+//                contentPadding = PaddingValues(end = 16.dp)
+//            ) {
+//                items(travelPlaces.filterNotNull()) { place ->
+//                    PlaceCard(
+//                        place = place,
+//                        isSelected = place.id == selectedPlace?.id,
+//                        onItemClick = { selectedPlace = place }
+//                    )
+//                }
+//            }
             // Các danh mục gợi ý
             Row(
                 modifier = Modifier
@@ -205,29 +244,30 @@ fun LocationScreen(
                 modifier = Modifier
                     .fillMaxWidth(),
                 cameraPositionState = cameraPositionState,
+                properties = MapProperties(
+                    isMyLocationEnabled = false
+                ),
                 uiSettings = MapUiSettings(
-                        zoomControlsEnabled = false,
+                        zoomControlsEnabled = true,
                         myLocationButtonEnabled = hasLocationPermission
                 )
             ) {
                 // Thêm Marker cho mỗi địa điểm TỪ DANH SÁCH HIỂN THỊ
                 // Hiển thị tất cả marker
                 travelPlaces.filterNotNull().forEach { place ->
-                    val markerState = markerStates.getOrPut(place.id) {
-                        rememberMarkerState(position = place.coordinates)
-                    }
                         Marker(
-                            state = markerState,
-//                            state = rememberMarkerState(position = place.coordinates),
+                            state = rememberMarkerState(position = place.coordinates),
                             title = place.name,
                             snippet = place.location,
                             onClick = {
-                                mapSelectedPlace = place
-                                selectedPlace = null // Chọn địa điểm khi nhấn vào marker
-                                true // Trả về false để không tiêu thụ sự kiện click
+                                selectedPlace = place
+                                // Mở màn hình chi tiết khi click
+                                navController.navigate("place_detail/${place.id}")
+                                true
                             }
                         )
                     }
+
                 // Tự động zoom để hiển thị tất cả marker khi có dữ liệu
                 if (travelPlaces.isNotEmpty() && !cameraPositionState.isMoving) {
                     LaunchedEffect(travelPlaces) {
@@ -251,6 +291,32 @@ fun LocationScreen(
                             )
                         }
                     }
+                }
+
+            }
+        }
+
+        // Hiển thị thông tin địa điểm được chọn
+        selectedPlace?.let { place ->
+            Card(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(16.dp)
+                    .clickable {
+                        navController.navigate("place_detail/${place.id}")
+                    },
+                elevation = CardDefaults.cardElevation(8.dp)
+            ) {
+                Column(modifier = Modifier.padding(16.dp)) {
+                    Text(
+                        text = place.name,
+                        fontWeight = FontWeight.Bold,
+                        fontSize = 18.sp
+                    )
+                    Text(
+                        text = place.location,
+                        fontSize = 14.sp
+                    )
                 }
             }
         }

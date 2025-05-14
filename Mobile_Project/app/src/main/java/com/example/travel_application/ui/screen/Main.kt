@@ -208,7 +208,8 @@ fun PopularPlaces(navController: NavController) {
         Text("Hiện chưa có địa điểm nổi bật", modifier = Modifier.padding(16.dp))
     } else {
         LazyRow(
-            modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp)
+            modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp),
+            horizontalArrangement = Arrangement.spacedBy(16.dp)
         ) {
             items(places, key = { it.id }) { place ->
                 PlaceCard(

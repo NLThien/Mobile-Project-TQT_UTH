@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.travel_application.app-mergeDebugResources-76:/values-ko/values-ko.xml",
+            "outputFile": "com.example.travel_application.app-mergeDebugResources-77:/values-ko/values-ko.xml",
             "map": [
                 {
                     "source": "C:\\Users\\ROG\\.gradle\\caches\\8.11.1\\transforms\\2f7feb7c4414fcb3ba2779afa70fea7d\\transformed\\core-1.15.0\\res\\values-ko\\values-ko.xml",
@@ -103,6 +103,23 @@
                         "startOffsets": "1155,1259,1398,1514,1616,1731,1848,1955,2171,2316,2419,2555,2673,2791,2910,2969,3027",
                         "endColumns": "103,138,115,101,114,116,106,94,144,102,135,117,117,118,58,57,74",
                         "endOffsets": "1254,1393,1509,1611,1726,1843,1950,2045,2311,2414,2550,2668,2786,2905,2964,3022,3097"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\ROG\\.gradle\\caches\\8.11.1\\transforms\\05e13ee24b0a2bc4f07b2d179f147f22\\transformed\\zxing-android-embedded-4.3.0\\res\\values-ko\\values-ko.xml",
+                    "from": {
+                        "startLines": "2,3,4,5",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "55,106,153,260",
+                        "endColumns": "50,46,106,71",
+                        "endOffsets": "101,148,255,327"
+                    },
+                    "to": {
+                        "startLines": "110,111,112,113",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "10552,10603,10650,10757",
+                        "endColumns": "50,46,106,71",
+                        "endOffsets": "10598,10645,10752,10824"
                     }
                 },
                 {
