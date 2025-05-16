@@ -127,8 +127,7 @@ fun PreviewPlaceCard() {
             price = 1200000,
             coordinates = LatLng(0.0, 0.0),
             placeId = "",
-            description = "",
-            facilities = emptyList()
+            description = ""
         ),
         isSelected = false,
         onItemClick = {}

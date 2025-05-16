@@ -1,8 +1,25 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.travel_application.app-mergeDebugResources-76:/values-zh-rTW/values-zh-rTW.xml",
+            "outputFile": "com.example.travel_application.app-mergeDebugResources-77:/values-zh-rTW/values-zh-rTW.xml",
             "map": [
+                {
+                    "source": "C:\\Users\\ROG\\.gradle\\caches\\8.11.1\\transforms\\05e13ee24b0a2bc4f07b2d179f147f22\\transformed\\zxing-android-embedded-4.3.0\\res\\values-zh-rTW\\values-zh-rTW.xml",
+                    "from": {
+                        "startLines": "2,3,4,5",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "55,104,151,244",
+                        "endColumns": "48,46,92,69",
+                        "endOffsets": "99,146,239,309"
+                    },
+                    "to": {
+                        "startLines": "110,111,112,113",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "10278,10327,10374,10467",
+                        "endColumns": "48,46,92,69",
+                        "endOffsets": "10322,10369,10462,10532"
+                    }
+                },
                 {
                     "source": "C:\\Users\\ROG\\.gradle\\caches\\8.11.1\\transforms\\7e5fc6dbcc60b3227ae247a4710b63e8\\transformed\\ui-release\\res\\values-zh-rTW\\values-zh-rTW.xml",
                     "from": {

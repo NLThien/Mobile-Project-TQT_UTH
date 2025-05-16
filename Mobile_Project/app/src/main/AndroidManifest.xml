@@ -8,6 +8,7 @@
     <application
         android:name=".TravelApplication"
         android:allowBackup="true"
+        android:largeHeap="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_app_square"
@@ -15,7 +16,8 @@
         android:roundIcon="@mipmap/ic_app_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.TravelApplication."
-        tools:targetApi="31">
+        tools:targetApi="31"
+        tools:ignore="AllowBackup,GoogleAppIndexingWarning">
 
         <!-- Firebase -->
         <meta-data

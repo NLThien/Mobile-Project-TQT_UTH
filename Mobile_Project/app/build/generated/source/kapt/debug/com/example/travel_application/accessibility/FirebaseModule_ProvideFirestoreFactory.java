@@ -19,7 +19,8 @@ import javax.annotation.processing.Generated;
     "unchecked",
     "rawtypes",
     "KotlinInternal",
-    "KotlinInternalInJava"
+    "KotlinInternalInJava",
+    "cast"
 })
 public final class FirebaseModule_ProvideFirestoreFactory implements Factory<FirebaseFirestore> {
   @Override

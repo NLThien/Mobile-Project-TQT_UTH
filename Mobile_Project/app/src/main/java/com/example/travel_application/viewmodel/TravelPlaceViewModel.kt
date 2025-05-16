@@ -10,7 +10,6 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-// Sử dụng @HiltViewModel nếu bạn dùng Hilt để Inject TravelRepository
 @HiltViewModel
 class TravelPlaceViewModel @Inject constructor(
     private val travelRepository: TravelRepository

@@ -19,7 +19,8 @@ import javax.inject.Provider;
     "unchecked",
     "rawtypes",
     "KotlinInternal",
-    "KotlinInternalInJava"
+    "KotlinInternalInJava",
+    "cast"
 })
 public final class TravelRepository_Factory implements Factory<TravelRepository> {
   private final Provider<FirebaseFirestore> firestoreProvider;

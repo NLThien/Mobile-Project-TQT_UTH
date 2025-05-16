@@ -23,173 +23,138 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.material.icons.filled.ArrowBack
 import com.example.travel_application.accessibility.rememberMessageBoxState
+import com.google.firebase.auth.FirebaseAuth
+import androidx.compose.runtime.LaunchedEffect
+import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.travel_application.viewmodel.NotificationViewModel
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.setValue
+import androidx.hilt.navigation.compose.hiltViewModel
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun NotificationDetailScreen(
     navController: NavController,
-    notificationId: Int?
+    notificationId: String?
 ) {
-    val messageBox = rememberMessageBoxState()
-    // Lấy thông tin thông báo từ ID (trong thực tế có thể lấy từ database/viewmodel)
-    val notification = remember(notificationId) {
-        when (notificationId) {
-            1 -> Notification(
-                id = 1,
-                title = "Nhắc nhở tour",
-                message = "Tour Hạ Long của bạn sẽ bắt đầu vào ngày mai. Vui lòng đến điểm tập trung trước 7:00",
-                type = NotificationType.TOUR_REMINDER,
-                time = SimpleDateFormat("HH:mm dd/MM/yyyy", Locale.getDefault()).format(Date())
-            )
-            2 -> Notification(
-                id = 2,
-                title = "Thanh toán thành công",
-                message = "Bạn đã thanh toán thành công cho tour Đà Nẵng. Vui lòng kiểm tra email để xem vé",
-                type = NotificationType.PAYMENT_SUCCESS,
-                time = SimpleDateFormat("HH:mm dd/MM/yyyy", Locale.getDefault()).format(Date())
-            )
-            3 -> Notification(
-                id = 3,
-                title = "Cảm ơn",
-                message = "Cảm ơn bạn đã sử dụng dịch vụ của chúng tôi. Chúc bạn có chuyến đi vui vẻ!",
-                type = NotificationType.THANK_YOU,
-                time = SimpleDateFormat("HH:mm dd/MM/yyyy", Locale.getDefault()).format(Date())
-            )
-            4 -> Notification(
-                id = 4,
-                title = "Khẩn cấp",
-                message = "Tour Sapa ngày 15/05 đã bị hoãn do thời tiết. Vui lòng liên hệ hỗ trợ để biết thêm chi tiết",
-                type = NotificationType.URGENT,
-                time = SimpleDateFormat("HH:mm dd/MM/yyyy", Locale.getDefault()).format(Date())
-            )
-            else -> null
+    // Kiểm tra null ngay từ đầu
+    if (notificationId.isNullOrEmpty()) {
+        Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
+            Text("Không tìm thấy thông báo")
+        }
+        navController.popBackStack() // Tự động quay lại nếu không có ID
+        return
+    }
+
+    val viewModel: NotificationViewModel = hiltViewModel()
+    val notification by viewModel.notificationDetail.collectAsState()
+    val transactionDoc by viewModel.transactionDocument.collectAsState()
+
+    // Tạo booking từ transaction document nếu có
+    val relatedBooking = remember(transactionDoc) {
+        transactionDoc?.let { viewModel.createBookingFromDocument(it) }
+    }
+
+    // Load dữ liệu
+    LaunchedEffect(notificationId) {
+        if (!notificationId.isNullOrEmpty()) {
+            viewModel.loadNotificationDetail(notificationId)
         }
     }
 
     if (notification == null) {
-        Box(
-            modifier = Modifier.fillMaxSize(),
-            contentAlignment = Alignment.Center
-        ) {
+        Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
             Text("Không tìm thấy thông báo")
         }
         return
     }
 
-    val backgroundColor = when(notification.type) {
-        NotificationType.TOUR_REMINDER -> Color(0xFFE3F2FD)
-        NotificationType.PAYMENT_SUCCESS -> Color(0xFFE8F5E9)
-        NotificationType.THANK_YOU -> Color(0xFFFFF8E1)
-        NotificationType.URGENT -> Color(0xFFFFEBEE)
-    }
-
+    val currentNotification = notification!!
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(backgroundColor)
-            .padding(16.dp)
+            .background(getNotificationBackground(currentNotification.type))
     ) {
         // Header với nút back
-        Row(
-            modifier = Modifier.fillMaxWidth(),
-            verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.SpaceBetween
-        ) {
-            IconButton(
-                onClick = { navController.popBackStack() }
-            ) {
-                Icon(
-                    imageVector = Icons.Default.ArrowBack,
-                    contentDescription = "Back"
-                )
-            }
+        TopAppBar(
+            title = { Text("Chi tiết thông báo") },
+            navigationIcon = {
+                IconButton(onClick = { navController.popBackStack() }) {
+                    Icon(Icons.Default.ArrowBack, contentDescription = "Back")
+                }
+            },
+            colors = TopAppBarDefaults.topAppBarColors() // Fix experimental API warning
+        )
 
-            Text(
-                text = "Chi tiết thông báo",
-                style = MaterialTheme.typography.titleLarge,
-                modifier = Modifier.weight(1f),
-                textAlign = TextAlign.Center
-            )
-
-            Spacer(modifier = Modifier.width(48.dp)) // Cân bằng layout
-        }
-
-        Spacer(modifier = Modifier.height(24.dp))
-
-        // Card thông tin chi tiết
+        // Card thông báo
         Card(
-            modifier = Modifier.fillMaxWidth(),
-            elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
-            colors = CardDefaults.cardColors(containerColor = Color.White)
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(16.dp),
+            elevation = CardDefaults.cardElevation(defaultElevation = 4.dp) // Fix experimental API warning
         ) {
-            Column(
-                modifier = Modifier.padding(24.dp)
-            ) {
+            Column(modifier = Modifier.padding(16.dp)) {
                 Text(
-                    text = notification.title,
+                    text = currentNotification.title,
                     style = MaterialTheme.typography.headlineSmall,
-                    fontWeight = FontWeight.Bold,
-                    color = MaterialTheme.colorScheme.primary
+                    fontWeight = FontWeight.Bold
                 )
-
-                Spacer(modifier = Modifier.height(8.dp))
-
-                Text(
-                    text = notification.time,
-                    style = MaterialTheme.typography.bodySmall,
-                    color = Color.Gray
-                )
+                Text(currentNotification.time, color = Color.Gray)
 
                 Spacer(modifier = Modifier.height(16.dp))
 
-                Text(
-                    text = notification.message,
-                    style = MaterialTheme.typography.bodyLarge,
-                    color = Color.DarkGray,
-                    modifier = Modifier.padding(bottom = 8.dp)
-                )
+                Text(currentNotification.message, style = MaterialTheme.typography.bodyLarge)
 
-                // Thêm thông tin chi tiết hơn nếu cần
-                if (notification.type == NotificationType.URGENT) {
+                // Hiển thị thông tin tour liên quan nếu có
+                relatedBooking?.let { booking ->
+                    Spacer(modifier = Modifier.height(24.dp))
+                    Divider()
                     Spacer(modifier = Modifier.height(16.dp))
-                    Text(
-                        text = "Liên hệ hỗ trợ: 1900 1234",
-                        style = MaterialTheme.typography.bodyMedium,
-                        color = MaterialTheme.colorScheme.error,
-                        fontWeight = FontWeight.Bold
-                    )
+
+                    Text("Thông tin tour liên quan:", fontWeight = FontWeight.Bold)
+                    Text("• Mã tour: ${booking.tourId}")
+                    Text("• Ngày đi: ${formatDate(booking.travelDate)}")
+                    Text("• Trạng thái: ${booking.status.name}")
                 }
-            }
-        }
 
-        // Thêm các action nếu cần
-        if (notification.type == NotificationType.TOUR_REMINDER) {
-            Spacer(modifier = Modifier.height(24.dp))
-            Button(
-                onClick = {
-                    messageBox.show("Thông báo", "Bạn đã xác nhận nhận thông báo này")
-                },
-
-                modifier = Modifier
-                    .fillMaxWidth(),
-
-                colors = ButtonDefaults.buttonColors(
-                    containerColor = Color(0xFF4CAF50),
-                    contentColor = Color.White
-                )
-
-            ) {
-                Text("Xem chi tiết tour")
+                // Action buttons
+                when (currentNotification.type) {
+                    NotificationType.TOUR_REMINDER -> {
+                        Spacer(modifier = Modifier.height(24.dp))
+                        Button(
+                            onClick = {
+                                //
+                            },
+                            modifier = Modifier.fillMaxWidth()
+                        ) {
+                            Text("Xem chi tiết tour")
+                        }
+                    }
+                    NotificationType.URGENT -> {
+                        Spacer(modifier = Modifier.height(16.dp))
+                        Text(
+                            "Liên hệ hỗ trợ: 1900 1234",
+                            color = MaterialTheme.colorScheme.error,
+                            fontWeight = FontWeight.Bold
+                        )
+                    }
+                    else -> {}
+                }
             }
         }
     }
 }
 
-@Preview(showBackground = true)
-@Composable
-fun PreviewNotificationDetailScreen() {
-    val navController = NavController(LocalContext.current)
-    NotificationDetailScreen(
-        navController = navController,
-        notificationId = 1
-    )
+fun formatDate(date: Date): String {
+    return SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(date)
+}
+
+fun getNotificationBackground(type: NotificationType): Color {
+    return when (type) {
+        NotificationType.TOUR_REMINDER -> Color(0xFFE3F2FD)
+        NotificationType.PAYMENT_SUCCESS -> Color(0xFFE8F5E9)
+        NotificationType.THANK_YOU -> Color(0xFFFFF8E1)
+        NotificationType.URGENT -> Color(0xFFFFEBEE)
+    }
 }

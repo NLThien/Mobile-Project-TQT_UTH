@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.travel_application.app-mergeDebugResources-76:/values-pt-rBR/values-pt-rBR.xml",
+            "outputFile": "com.example.travel_application.app-mergeDebugResources-77:/values-pt-rBR/values-pt-rBR.xml",
             "map": [
                 {
                     "source": "C:\\Users\\ROG\\.gradle\\caches\\8.11.1\\transforms\\9c795075946315649e22f671045dc6ee\\transformed\\play-services-base-18.5.0\\res\\values-pt-rBR\\values.xml",
